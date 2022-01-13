@@ -16,6 +16,7 @@
 #include "attribute_propagator.h"
 #include "constant_propagation.h"
 #include "check_qat_mode.h"
+#include "to_dot_graph.h"
 
 #include <torch/csrc/jit/passes/constant_pooling.h>
 #include <torch/csrc/jit/passes/dead_code_elimination.h>
@@ -292,6 +293,7 @@ namespace jit {
         module.eval();
         auto graph = module.get_method("forward").graph();
         if (CheckQatMode(*graph)) {
+            std::cout<<"PengMode QAT"<<std::endl;
             // QAT cannot use freeze_module, because freeze_module will remove fake_quantize op
             torch::jit::Inline(*graph);
             ConstantPropagationImmutableTypes(graph);
@@ -303,7 +305,9 @@ namespace jit {
             std::cout<<"Graph after AttributePropagator"<<std::endl;
             std::cout << graph->toString(false) << std::endl;
         } else {
+            std::cout<<"PengMode normal"<<std::endl;
             module = torch::jit::freeze_module(module);
+            graph = module.get_method("forward").graph();
             std::cout << graph->toString(false) << std::endl;
         }
 
@@ -332,6 +336,8 @@ namespace jit {
 //        RemoveSlice(graph->block());
 
         torch::jit::EliminateDeadCode(graph);
+        std::cout<<"DOT Graph:"<<std::endl;
+        std::cout<<ToDotGraph(*graph)<<std::endl;
     }
 }  // namespace jit
 }  // namespace torch
