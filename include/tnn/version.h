@@ -15,7 +15,7 @@
 #define TNN_INCLUDE_TNN_VERSION_H_
 
 static char *branch_name_tnn = "centernet";
-static char *commit_date_tnn = "2021-12-28";
-static char *commit_hash_tnn = "d36d5a42";
+static char *commit_date_tnn = "2022-01-13";
+static char *commit_hash_tnn = "e3099d1";
 
 #endif //TNN_INCLUDE_TNN_VERSION_H_

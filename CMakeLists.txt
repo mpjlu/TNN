@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
-
+#set(CMAKE_CXX_STANDARD 14)
+#set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # https://cmake.org/cmake/help/latest/policy/CMP0068.html
 if(POLICY CMP0068)
     cmake_policy(SET CMP0068 NEW)
