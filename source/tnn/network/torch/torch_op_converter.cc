@@ -109,14 +109,19 @@ public:
         const auto stride = getValue<std::vector<int64_t>>(inputs[3]);
         const auto padding = getValue<std::vector<int64_t>>(inputs[4]);
         const auto dialation = getValue<std::vector<int64_t>>(inputs[5]);
-        const auto group = getValue<int64_t>(inputs[8]);
+        const auto output_pads = getValue<std::vector<int64_t>>(inputs[7]);
+	const auto group = getValue<int64_t>(inputs[8]);
         // const auto transposed = getValue<bool>(inputs[6]);
 
         // if (transposed) {
         //     layer_info->type_str = LAYER_DECONVOLUTION;
         //     std::cout << "deconv" << std::endl;
         // }
-
+        if (output_pads.size()>0 && output_pads[0] != 0) {
+            layer_param->pad_type = 3;
+	} else {
+            layer_param->pad_type = -1;
+	}
         auto optional_ivalue = toIValue(weight);
         if (!optional_ivalue) {
             layer_param->qat_mode = true;
@@ -126,15 +131,19 @@ public:
         } else {
             auto weight_buf = getValue(weight);
             auto shape = weight_buf.GetBufferDims();
-            layer_param->output_channel = shape[0];
-            layer_param->input_channel = shape[1];
+	    if (layer_param->pad_type == 3) {
+                layer_param->output_channel = shape[1] * group;
+                layer_param->input_channel = shape[0] / group;
+	    } else {
+                layer_param->output_channel = shape[0];
+                layer_param->input_channel = shape[1];
+	    }
             layer_param->kernels = {shape[3], shape[2]};
             layer_res->filter_handle = ConvertHalfHandle(weight_buf);
         }
 
         // set param accroding to real value, just test here
         layer_param->name = layer_info->name;
-        layer_param->pad_type = -1;
         layer_param->dialations = {(int)dialation[1], (int)dialation[0]};
         layer_param->strides = {(int)stride[1], (int)stride[0]};
         layer_param->pads = {(int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
@@ -1538,6 +1547,7 @@ REGISTER_TORCH_OP_CONVERTER(Relu, aten, relu_)
 REGISTER_TORCH_OP_CONVERTER(Reshape, aten, reshape)
 REGISTER_TORCH_OP_CONVERTER(Reshape, aten, view)
 REGISTER_TORCH_OP_CONVERTER(Sigmoid, aten, sigmoid)
+REGISTER_TORCH_OP_CONVERTER(Sigmoid, aten, sigmoid_)
 REGISTER_TORCH_OP_CONVERTER(Size, aten, size)
 REGISTER_TORCH_OP_CONVERTER(Softmax, aten, softmax)
 REGISTER_TORCH_OP_CONVERTER(Split, aten, split)
