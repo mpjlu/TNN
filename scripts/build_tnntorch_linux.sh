@@ -15,7 +15,7 @@ else
     export LIBTORCH_ROOT_DIR=$1
 fi
 
-export LIBTORCHVISION_ROOT_DIR=/usr/local/libtorchvision-cxx11-abi-0.9.1+cu102/
+export LIBTORCHVISION_ROOT_DIR=`find /usr/local/ -name "libtorchvision*-0.9.1+*"`
 
 BUILD_DIR=${TNN_ROOT_PATH}/scripts/build_tnntorch_linux
 TNN_INSTALL_DIR=${TNN_ROOT_PATH}/scripts/tnntorch_linux_release
@@ -61,9 +61,8 @@ cp -r ${TNN_ROOT_PATH}/include ${TNN_INSTALL_DIR}/
 cp -d libTNN.so* ${TNN_INSTALL_DIR}/lib/
 
 # deps
-cp -d /usr/local/cuda/lib64/libcudart.so* ${TNN_INSTALL_DIR}/lib/
-cp -d /usr/local/cuda/targets/x86_64-linux/lib/libnvrtc.so* ${TNN_INSTALL_DIR}/lib/
-cp -d /usr/local/cuda/targets/x86_64-linux/lib/libnvToolsExt*.so* ${TNN_INSTALL_DIR}/lib/
+cuda_dep_list=$( ldd libTNN.so | awk '{if (match($3, "/usr/local/cuda")){ print $3}}' )
+cp $cuda_dep_list ${TNN_INSTALL_DIR}/lib/
 
 #cublas
 cublas_dep_list=$( ldd libTNN.so | awk '{if (match($3, "cublas")){ print $3}}' )
@@ -72,10 +71,17 @@ cp $cublas_dep_list ${TNN_INSTALL_DIR}/lib/
 #tensorrt
 tensorrt_dep_list=$( ldd libTNN.so | awk '{if (match($3, "TensorRT")){ print $3}}' )
 cp ${tensorrt_dep_list} ${TNN_INSTALL_DIR}/lib/
+#tensorrt8 special 
+tensorrt_builder_resource=`find ${TENSORRT_ROOT_DIR} -name "libnvinfer_builder_resource.so*"`
+if [ -n "$tensorrt_builder_resource" ]; then  
+    cp ${tensorrt_builder_resource} ${TNN_INSTALL_DIR}/lib/
+fi
 
 #cudnn
 cudnn_dep_list=$( ldd libTNN.so | awk '{if (match($3, "cudnn")){ print $3}}' )
 cp $cudnn_dep_list ${TNN_INSTALL_DIR}/lib/
+cp ${CUDNN_ROOT_DIR}/lib64/libcudnn_cnn_infer.so.8 ${TNN_INSTALL_DIR}/lib/
+cp ${CUDNN_ROOT_DIR}/lib64/libcudnn_ops_infer.so.8 ${TNN_INSTALL_DIR}/lib/
 
 # torch
 torch_dep_list=$( ldd libTNN.so | awk '{if (match($3,"libtorch-shared")){ print $3}}' )

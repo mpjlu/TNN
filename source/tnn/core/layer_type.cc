@@ -255,6 +255,8 @@ static std::map<std::string, LayerType> global_layer_type_map = {
     {"LogSoftmax", LAYER_LOGSOFTMAX},
     {"SplitTorch", LAYER_SPLITTORCH},
     {"PermuteV2", LAYER_PERMUTEV2},
+    {"Clone", LAYER_CLONE},
+    {"ReshapeTorch", LAYER_RESHAPETORCH},
     {"QuantizedReshape", LAYER_RESHAPE},
     {"QuantizedPermute", LAYER_PERMUTE}
 };

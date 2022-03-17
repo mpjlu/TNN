@@ -16,6 +16,7 @@
 
 #include <torch/csrc/jit/passes/dead_code_elimination.h>
 #include <torch/csrc/jit/passes/subgraph_rewrite.h>
+#include <torch/torch.h>
 
 #include "tnn/network/torch/jit_util.h"
 #include "tnn/network/torch/partitioning.h"
@@ -162,7 +163,13 @@ torch::jit::Module CompileTorch(torch::jit::Module &mod, InputShapesMap &min_inp
 
         // run shape infer and combine to blocks
         if (min_input_shape.size() && max_input_shape.size() && min_input_shape.size() == max_input_shape.size()) {
-            auto shape_mod = mod.clone();
+	    //fix clone memory leak
+	    std::stringstream save_stream(std::ios_base::binary | std::ios_base::in | std::ios_base::out);
+	    mod.save(save_stream);
+	    save_stream.seekg(0);
+	    c10::Device device(c10::kCPU);
+            ConvertToTorchDevice(device, config.device_type, config.device_id);
+	    auto shape_mod = torch::jit::freeze(torch::jit::load(save_stream, device));
             auto shape_seg = partitioning::Partition(shape_mod, shape_mod.get_method(forward_func_name).graph(), config);
             std::vector<BlobDesc> subgraph_min_input_info;
             std::vector<BlobDesc> subgraph_max_input_info;
@@ -186,6 +193,11 @@ torch::jit::Module CompileTorch(torch::jit::Module &mod, InputShapesMap &min_inp
                 block.register_min_inshape(min_shape);
                 block.register_max_inshape(max_shape);
                 block.register_intype(in_type);
+            }
+
+            if (config.device_type == DEVICE_CUDA) {
+                // release cached cuda memory
+                c10::cuda::CUDACachingAllocator::emptyCache();
             }
         }
     #if (DUMP_INPUT_BLOB || DUMP_OUTPUT_BLOB)
@@ -274,8 +286,8 @@ torch::jit::Module CompileTorch(torch::jit::Module &mod, InputShapesMap &min_inp
     // remove constant nodes which has been convert to tnn netresource
     torch::jit::EliminateDeadCode(g);
 
-    //  std::cout << "============================= the final graph ===========================" << std::endl;
-    //  std::cout << g->toString() << std::endl;
+    // std::cout << "============================= the final graph ===========================" << std::endl;
+    // std::cout << g->toString() << std::endl;
 
     if (config.device_type == DEVICE_CUDA) {
         // release cached cuda memory

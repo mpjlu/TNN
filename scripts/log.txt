@@ -1,0 +1,2408 @@
+D/tnn: CheckResult [File /data/TNN/test/test.cc][Line 393] init tnn success! 
+TNNTorchNetwork::Init
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:aten::avg_pool2d Kind:519
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:aten::norm Kind:863
+PengNodeKind:aten::clamp_min Kind:552
+PengNodeKind:aten::expand_as Kind:639
+PengNodeKind:aten::div Kind:206
+PengNodeKind:aten::size Kind:953
+PengNodeKind:prim::NumToTensor Kind:69
+PengNodeKind:aten::Int Kind:75
+PengNodeKind:prim::ListConstruct Kind:62
+PengNodeKind:aten::view Kind:1072
+PengNodeKind:aten::norm Kind:863
+PengNodeKind:aten::clamp_min Kind:552
+PengNodeKind:aten::expand_as Kind:639
+PengNodeKind:aten::div Kind:206
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:aten::upsample_nearest2d Kind:1060
+PengNodeKind:prim::ListConstruct Kind:62
+PengNodeKind:aten::cat Kind:543
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:aten::norm Kind:863
+PengNodeKind:aten::clamp_min Kind:552
+PengNodeKind:aten::expand_as Kind:639
+PengNodeKind:aten::div Kind:206
+PengNodeKind:prim::ListConstruct Kind:62
+PengNodeKind:aten::cat Kind:543
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:aten::norm Kind:863
+PengNodeKind:aten::clamp_min Kind:552
+PengNodeKind:aten::expand_as Kind:639
+PengNodeKind:aten::div Kind:206
+PengNodeKind:prim::ListConstruct Kind:62
+PengNodeKind:aten::cat Kind:543
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::add Kind:494
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::batch_norm Kind:527
+PengNodeKind:aten::relu_ Kind:85
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::Constant Kind:14
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:prim::GetAttr Kind:140
+PengNodeKind:aten::_convolution Kind:361
+PengNodeKind:aten::tanh Kind:1000
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::slice Kind:955
+PengNodeKind:aten::add Kind:494
+PengNodeKind:aten::div Kind:206
+PengNodeKind:prim::TupleConstruct Kind:58
+PengMode normal
+graph(%self.1 : __torch__.model_generator.___torch_mangle_0.LocalEnhancer_k_deconv_512_pad0,
+      %input.10 : Tensor,
+      %y.2 : Tensor):
+  %56 : bool = prim::Constant[value=1]()
+  %55 : int[] = prim::Constant[value=[1]]()
+  %54 : float = prim::Constant[value=2.]()
+  %52 : float = prim::Constant[value=9.9999999999999998e-13]()
+  %50 : int = prim::Constant[value=-1]()
+  %49 : float = prim::Constant[value=0.10000000000000001]()
+  %48 : float = prim::Constant[value=1.0000000000000001e-05]()
+  %47 : int[] = prim::Constant[value=[0, 0]]()
+  %41 : float[] = prim::Constant[value=[16., 16.]]()
+  %39 : NoneType = prim::Constant()
+  %38 : bool = prim::Constant[value=0]()
+  %37 : int[] = prim::Constant[value=[1, 1]]()
+  %36 : int[] = prim::Constant[value=[2, 2]]()
+  %35 : int[] = prim::Constant[value=[3, 3]]()
+  %10 : int = prim::Constant[value=4]()
+  %9 : int = prim::Constant[value=2]()
+  %8 : int = prim::Constant[value=3]()
+  %7 : int = prim::Constant[value=1]()
+  %6 : int = prim::Constant[value=9223372036854775807]()
+  %5 : int = prim::Constant[value=0]()
+  %4 : Tensor = prim::Constant[value={1}]()
+  %3 : Tensor = prim::Constant[value={2}]()
+  %self.to_res.1.weight : Float(4, 4, 3, 3, strides=[36, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.to_res.1.bias : Float(4, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=-0.3051  0.3356 -0.1502  0.1076 [ CUDAFloatType{4} ]]()
+  %self.refine512.1.weight : Float(4, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value= 1.3717  1.2381  1.2205  1.3062 [ CUDAFloatType{4} ]]()
+  %self.refine512.1.bias : Float(4, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value= 0.3684  0.3367  0.1883  0.3301 [ CUDAFloatType{4} ]]()
+  %self.refine512.1.running_mean : Float(4, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=0.01 * -0.2096  5.3342 -3.0835  4.0221 [ CUDAFloatType{4} ]]()
+  %self.refine512.1.running_var : Float(4, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=0.01 *  2.2162  2.0555  1.3036  1.9737 [ CUDAFloatType{4} ]]()
+  %self.refine512.0.weight : Float(24, 4, 3, 3, strides=[36, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.refine512.0.bias : Float(4, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=0.01 * -0.2760  0.4334 -0.0409  1.4458 [ CUDAFloatType{4} ]]()
+  %self.model1_2.4.weight : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.4.bias : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.4.running_mean : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.4.running_var : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.3.weight : Float(48, 24, 3, 3, strides=[216, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.3.bias : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.6.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.6.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.6.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.6.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.5.weight : Float(48, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.5.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.2.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.2.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.2.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.2.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.1.weight : Float(48, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.2.conv_block.1.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.6.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.6.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.6.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.6.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.5.weight : Float(48, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.5.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.2.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.2.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.2.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.2.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.1.weight : Float(48, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.1.conv_block.1.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.6.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.6.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.6.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.6.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.5.weight : Float(48, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.5.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.2.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.2.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.2.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.2.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.1.weight : Float(48, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_2.0.conv_block.1.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.5.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.5.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.5.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.5.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.4.weight : Float(48, 24, 3, 3, strides=[216, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.4.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.2.weight : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.2.bias : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.2.running_mean : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.2.running_var : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.1.weight : Float(24, 6, 7, 7, strides=[294, 49, 7, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model1_1.1.bias : Float(24, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec2.1.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec2.1.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec2.1.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec2.1.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec2.0.weight : Float(96, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec2.0.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec1.1.weight : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec1.1.bias : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec1.1.running_mean : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec1.1.running_var : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec1.0.weight : Float(192, 96, 3, 3, strides=[864, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec1.0.bias : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec0.1.weight : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec0.1.bias : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec0.1.running_mean : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec0.1.running_var : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec0.0.weight : Float(384, 192, 3, 3, strides=[1728, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.dec0.0.bias : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.2.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.1.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res789.0.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.conv1x1_6.weight : Float(384, 896, 1, 1, strides=[896, 1, 1, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.conv1x1_6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res6.0.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_5.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_5.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_5.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.conv1x1_5.weight : Float(384, 896, 1, 1, strides=[896, 1, 1, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.conv1x1_5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res5.0.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_4.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_4.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_4.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.ins_4.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.conv1x1_4.weight : Float(384, 896, 1, 1, strides=[896, 1, 1, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.conv1x1_4.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.3.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.2.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.1.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.6.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.6.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.6.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.6.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.5.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.5.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.2.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.2.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.2.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.2.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.1.weight : Float(384, 384, 3, 3, strides=[3456, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.res1234.0.conv_block.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc3.1.weight : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc3.1.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc3.1.running_mean : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc3.1.running_var : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc3.0.weight : Float(384, 192, 3, 3, strides=[1728, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc3.0.bias : Float(384, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc2.1.weight : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc2.1.bias : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc2.1.running_mean : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc2.1.running_var : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc2.0.weight : Float(192, 96, 3, 3, strides=[864, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc2.0.bias : Float(192, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc1.1.weight : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc1.1.bias : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc1.1.running_mean : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc1.1.running_var : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc1.0.weight : Float(96, 48, 3, 3, strides=[432, 9, 3, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc1.0.bias : Float(96, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc0.2.weight : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc0.2.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc0.2.running_mean : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc0.2.running_var : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc0.1.weight : Float(48, 6, 7, 7, strides=[294, 49, 7, 1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %self.model.enc0.1.bias : Float(48, strides=[1], requires_grad=0, device=cuda:0) = prim::Constant[value=<Tensor>]()
+  %input0.8 : Tensor = aten::avg_pool2d(%input.10, %35, %36, %37, %38, %38, %39)
+  %input.33 : Tensor = aten::_convolution(%input0.8, %self.model.enc0.1.weight, %self.model.enc0.1.bias, %37, %35, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.21 : Tensor = aten::batch_norm(%input.33, %self.model.enc0.2.weight, %self.model.enc0.2.bias, %self.model.enc0.2.running_mean, %self.model.enc0.2.running_var, %38, %49, %48, %56)
+  %84 : Tensor = aten::relu_(%input.21)
+  %input.23 : Tensor = aten::_convolution(%84, %self.model.enc1.0.weight, %self.model.enc1.0.bias, %36, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.25 : Tensor = aten::batch_norm(%input.23, %self.model.enc1.1.weight, %self.model.enc1.1.bias, %self.model.enc1.1.running_mean, %self.model.enc1.1.running_var, %38, %49, %48, %56)
+  %95 : Tensor = aten::relu_(%input.25)
+  %input.27 : Tensor = aten::_convolution(%95, %self.model.enc2.0.weight, %self.model.enc2.0.bias, %36, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.29 : Tensor = aten::batch_norm(%input.27, %self.model.enc2.1.weight, %self.model.enc2.1.bias, %self.model.enc2.1.running_mean, %self.model.enc2.1.running_var, %38, %49, %48, %56)
+  %106 : Tensor = aten::relu_(%input.29)
+  %input.35 : Tensor = aten::_convolution(%106, %self.model.enc3.0.weight, %self.model.enc3.0.bias, %36, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.37 : Tensor = aten::batch_norm(%input.35, %self.model.enc3.1.weight, %self.model.enc3.1.bias, %self.model.enc3.1.running_mean, %self.model.enc3.1.running_var, %38, %49, %48, %56)
+  %117 : Tensor = aten::relu_(%input.37)
+  %input.57 : Tensor = aten::_convolution(%117, %self.model.res1234.0.conv_block.1.weight, %self.model.res1234.0.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.59 : Tensor = aten::batch_norm(%input.57, %self.model.res1234.0.conv_block.2.weight, %self.model.res1234.0.conv_block.2.bias, %self.model.res1234.0.conv_block.2.running_mean, %self.model.res1234.0.conv_block.2.running_var, %38, %49, %48, %56)
+  %135 : Tensor = aten::relu_(%input.59)
+  %input.61 : Tensor = aten::_convolution(%135, %self.model.res1234.0.conv_block.5.weight, %self.model.res1234.0.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %143 : Tensor = aten::batch_norm(%input.61, %self.model.res1234.0.conv_block.6.weight, %self.model.res1234.0.conv_block.6.bias, %self.model.res1234.0.conv_block.6.running_mean, %self.model.res1234.0.conv_block.6.running_var, %38, %49, %48, %56)
+  %144 : Tensor = aten::add(%117, %143, %7)
+  %input.63 : Tensor = aten::_convolution(%144, %self.model.res1234.1.conv_block.1.weight, %self.model.res1234.1.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.65 : Tensor = aten::batch_norm(%input.63, %self.model.res1234.1.conv_block.2.weight, %self.model.res1234.1.conv_block.2.bias, %self.model.res1234.1.conv_block.2.running_mean, %self.model.res1234.1.conv_block.2.running_var, %38, %49, %48, %56)
+  %158 : Tensor = aten::relu_(%input.65)
+  %input.67 : Tensor = aten::_convolution(%158, %self.model.res1234.1.conv_block.5.weight, %self.model.res1234.1.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %166 : Tensor = aten::batch_norm(%input.67, %self.model.res1234.1.conv_block.6.weight, %self.model.res1234.1.conv_block.6.bias, %self.model.res1234.1.conv_block.6.running_mean, %self.model.res1234.1.conv_block.6.running_var, %38, %49, %48, %56)
+  %167 : Tensor = aten::add(%144, %166, %7)
+  %input.22 : Tensor = aten::_convolution(%167, %self.model.res1234.2.conv_block.1.weight, %self.model.res1234.2.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.28 : Tensor = aten::batch_norm(%input.22, %self.model.res1234.2.conv_block.2.weight, %self.model.res1234.2.conv_block.2.bias, %self.model.res1234.2.conv_block.2.running_mean, %self.model.res1234.2.conv_block.2.running_var, %38, %49, %48, %56)
+  %181 : Tensor = aten::relu_(%input.28)
+  %input.30 : Tensor = aten::_convolution(%181, %self.model.res1234.2.conv_block.5.weight, %self.model.res1234.2.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %189 : Tensor = aten::batch_norm(%input.30, %self.model.res1234.2.conv_block.6.weight, %self.model.res1234.2.conv_block.6.bias, %self.model.res1234.2.conv_block.6.running_mean, %self.model.res1234.2.conv_block.6.running_var, %38, %49, %48, %56)
+  %190 : Tensor = aten::add(%167, %189, %7)
+  %input.41 : Tensor = aten::_convolution(%190, %self.model.res1234.3.conv_block.1.weight, %self.model.res1234.3.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.43 : Tensor = aten::batch_norm(%input.41, %self.model.res1234.3.conv_block.2.weight, %self.model.res1234.3.conv_block.2.bias, %self.model.res1234.3.conv_block.2.running_mean, %self.model.res1234.3.conv_block.2.running_var, %38, %49, %48, %56)
+  %204 : Tensor = aten::relu_(%input.43)
+  %input.39 : Tensor = aten::_convolution(%204, %self.model.res1234.3.conv_block.5.weight, %self.model.res1234.3.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %212 : Tensor = aten::batch_norm(%input.39, %self.model.res1234.3.conv_block.6.weight, %self.model.res1234.3.conv_block.6.bias, %self.model.res1234.3.conv_block.6.running_mean, %self.model.res1234.3.conv_block.6.running_var, %38, %49, %48, %56)
+  %213 : Tensor = aten::add(%190, %212, %7)
+  %214 : Tensor = aten::norm(%213, %54, %55, %56)
+  %215 : Tensor = aten::clamp_min(%214, %52)
+  %denom.1 : Tensor = aten::expand_as(%215, %213)
+  %res4.1 : Tensor = aten::div(%213, %denom.1)
+  %218 : int = aten::size(%y.2, %5)
+  %219 : int[] = prim::ListConstruct(%218, %50, %7, %7)
+  %input.31 : Tensor = aten::view(%y.2, %219)
+  %221 : Tensor = aten::norm(%input.31, %54, %55, %56)
+  %222 : Tensor = aten::clamp_min(%221, %52)
+  %denom0.1 : Tensor = aten::expand_as(%222, %input.31)
+  %input1.1 : Tensor = aten::div(%input.31, %denom0.1)
+  %y.1 : Tensor = aten::upsample_nearest2d(%input1.1, %39, %41)
+  %226 : Tensor[] = prim::ListConstruct(%res4.1, %y.1)
+  %input2.1 : Tensor = aten::cat(%226, %7)
+  %input0.2 : Tensor = aten::_convolution(%input2.1, %self.model.conv1x1_4.weight, %self.model.conv1x1_4.bias, %37, %47, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.45 : Tensor = aten::batch_norm(%input0.2, %self.model.ins_4.weight, %self.model.ins_4.bias, %self.model.ins_4.running_mean, %self.model.ins_4.running_var, %38, %49, %48, %56)
+  %236 : Tensor = aten::relu_(%input.45)
+  %input.49 : Tensor = aten::_convolution(%236, %self.model.res5.0.conv_block.1.weight, %self.model.res5.0.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.51 : Tensor = aten::batch_norm(%input.49, %self.model.res5.0.conv_block.2.weight, %self.model.res5.0.conv_block.2.bias, %self.model.res5.0.conv_block.2.running_mean, %self.model.res5.0.conv_block.2.running_var, %38, %49, %48, %56)
+  %251 : Tensor = aten::relu_(%input.51)
+  %input.47 : Tensor = aten::_convolution(%251, %self.model.res5.0.conv_block.5.weight, %self.model.res5.0.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %259 : Tensor = aten::batch_norm(%input.47, %self.model.res5.0.conv_block.6.weight, %self.model.res5.0.conv_block.6.bias, %self.model.res5.0.conv_block.6.running_mean, %self.model.res5.0.conv_block.6.running_var, %38, %49, %48, %56)
+  %260 : Tensor = aten::add(%236, %259, %7)
+  %261 : Tensor = aten::norm(%260, %54, %55, %56)
+  %262 : Tensor = aten::clamp_min(%261, %52)
+  %denom1.1 : Tensor = aten::expand_as(%262, %260)
+  %res5.1 : Tensor = aten::div(%260, %denom1.1)
+  %265 : Tensor[] = prim::ListConstruct(%res5.1, %y.1)
+  %input3.1 : Tensor = aten::cat(%265, %7)
+  %input0.4 : Tensor = aten::_convolution(%input3.1, %self.model.conv1x1_5.weight, %self.model.conv1x1_5.bias, %37, %47, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.53 : Tensor = aten::batch_norm(%input0.4, %self.model.ins_5.weight, %self.model.ins_5.bias, %self.model.ins_5.running_mean, %self.model.ins_5.running_var, %38, %49, %48, %56)
+  %275 : Tensor = aten::relu_(%input.53)
+  %input.69 : Tensor = aten::_convolution(%275, %self.model.res6.0.conv_block.1.weight, %self.model.res6.0.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.71 : Tensor = aten::batch_norm(%input.69, %self.model.res6.0.conv_block.2.weight, %self.model.res6.0.conv_block.2.bias, %self.model.res6.0.conv_block.2.running_mean, %self.model.res6.0.conv_block.2.running_var, %38, %49, %48, %56)
+  %290 : Tensor = aten::relu_(%input.71)
+  %input.55 : Tensor = aten::_convolution(%290, %self.model.res6.0.conv_block.5.weight, %self.model.res6.0.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %298 : Tensor = aten::batch_norm(%input.55, %self.model.res6.0.conv_block.6.weight, %self.model.res6.0.conv_block.6.bias, %self.model.res6.0.conv_block.6.running_mean, %self.model.res6.0.conv_block.6.running_var, %38, %49, %48, %56)
+  %299 : Tensor = aten::add(%275, %298, %7)
+  %300 : Tensor = aten::norm(%299, %54, %55, %56)
+  %301 : Tensor = aten::clamp_min(%300, %52)
+  %denom2.1 : Tensor = aten::expand_as(%301, %299)
+  %res6.1 : Tensor = aten::div(%299, %denom2.1)
+  %304 : Tensor[] = prim::ListConstruct(%res6.1, %y.1)
+  %input4.1 : Tensor = aten::cat(%304, %7)
+  %input0.10 : Tensor = aten::_convolution(%input4.1, %self.model.conv1x1_6.weight, %self.model.conv1x1_6.bias, %37, %47, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.73 : Tensor = aten::batch_norm(%input0.10, %self.model.ins_6.weight, %self.model.ins_6.bias, %self.model.ins_6.running_mean, %self.model.ins_6.running_var, %38, %49, %48, %56)
+  %314 : Tensor = aten::relu_(%input.73)
+  %input.3 : Tensor = aten::_convolution(%314, %self.model.res789.0.conv_block.1.weight, %self.model.res789.0.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.5 : Tensor = aten::batch_norm(%input.3, %self.model.res789.0.conv_block.2.weight, %self.model.res789.0.conv_block.2.bias, %self.model.res789.0.conv_block.2.running_mean, %self.model.res789.0.conv_block.2.running_var, %38, %49, %48, %56)
+  %331 : Tensor = aten::relu_(%input.5)
+  %input.14 : Tensor = aten::_convolution(%331, %self.model.res789.0.conv_block.5.weight, %self.model.res789.0.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %339 : Tensor = aten::batch_norm(%input.14, %self.model.res789.0.conv_block.6.weight, %self.model.res789.0.conv_block.6.bias, %self.model.res789.0.conv_block.6.running_mean, %self.model.res789.0.conv_block.6.running_var, %38, %49, %48, %56)
+  %340 : Tensor = aten::add(%314, %339, %7)
+  %input.16 : Tensor = aten::_convolution(%340, %self.model.res789.1.conv_block.1.weight, %self.model.res789.1.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.18 : Tensor = aten::batch_norm(%input.16, %self.model.res789.1.conv_block.2.weight, %self.model.res789.1.conv_block.2.bias, %self.model.res789.1.conv_block.2.running_mean, %self.model.res789.1.conv_block.2.running_var, %38, %49, %48, %56)
+  %354 : Tensor = aten::relu_(%input.18)
+  %input.20 : Tensor = aten::_convolution(%354, %self.model.res789.1.conv_block.5.weight, %self.model.res789.1.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %362 : Tensor = aten::batch_norm(%input.20, %self.model.res789.1.conv_block.6.weight, %self.model.res789.1.conv_block.6.bias, %self.model.res789.1.conv_block.6.running_mean, %self.model.res789.1.conv_block.6.running_var, %38, %49, %48, %56)
+  %363 : Tensor = aten::add(%340, %362, %7)
+  %input.75 : Tensor = aten::_convolution(%363, %self.model.res789.2.conv_block.1.weight, %self.model.res789.2.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.8 : Tensor = aten::batch_norm(%input.75, %self.model.res789.2.conv_block.2.weight, %self.model.res789.2.conv_block.2.bias, %self.model.res789.2.conv_block.2.running_mean, %self.model.res789.2.conv_block.2.running_var, %38, %49, %48, %56)
+  %377 : Tensor = aten::relu_(%input.8)
+  %input.77 : Tensor = aten::_convolution(%377, %self.model.res789.2.conv_block.5.weight, %self.model.res789.2.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %385 : Tensor = aten::batch_norm(%input.77, %self.model.res789.2.conv_block.6.weight, %self.model.res789.2.conv_block.6.bias, %self.model.res789.2.conv_block.6.running_mean, %self.model.res789.2.conv_block.6.running_var, %38, %49, %48, %56)
+  %386 : Tensor = aten::add(%363, %385, %7)
+  %input.79 : Tensor = aten::_convolution(%386, %self.model.dec0.0.weight, %self.model.dec0.0.bias, %36, %37, %37, %56, %37, %7, %56, %38, %56, %56)
+  %input.81 : Tensor = aten::batch_norm(%input.79, %self.model.dec0.1.weight, %self.model.dec0.1.bias, %self.model.dec0.1.running_mean, %self.model.dec0.1.running_var, %38, %49, %48, %56)
+  %397 : Tensor = aten::relu_(%input.81)
+  %input.83 : Tensor = aten::_convolution(%397, %self.model.dec1.0.weight, %self.model.dec1.0.bias, %36, %37, %37, %56, %37, %7, %56, %38, %56, %56)
+  %input.85 : Tensor = aten::batch_norm(%input.83, %self.model.dec1.1.weight, %self.model.dec1.1.bias, %self.model.dec1.1.running_mean, %self.model.dec1.1.running_var, %38, %49, %48, %56)
+  %408 : Tensor = aten::relu_(%input.85)
+  %input.24 : Tensor = aten::_convolution(%408, %self.model.dec2.0.weight, %self.model.dec2.0.bias, %36, %37, %37, %56, %37, %7, %56, %38, %56, %56)
+  %input.12 : Tensor = aten::batch_norm(%input.24, %self.model.dec2.1.weight, %self.model.dec2.1.bias, %self.model.dec2.1.running_mean, %self.model.dec2.1.running_var, %38, %49, %48, %56)
+  %419 : Tensor = aten::relu_(%input.12)
+  %input0.12 : Tensor = aten::_convolution(%input.10, %self.model1_1.1.weight, %self.model1_1.1.bias, %37, %35, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.26 : Tensor = aten::batch_norm(%input0.12, %self.model1_1.2.weight, %self.model1_1.2.bias, %self.model1_1.2.running_mean, %self.model1_1.2.running_var, %38, %49, %48, %56)
+  %445 : Tensor = aten::relu_(%input.26)
+  %input.6 : Tensor = aten::_convolution(%445, %self.model1_1.4.weight, %self.model1_1.4.bias, %36, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.32 : Tensor = aten::batch_norm(%input.6, %self.model1_1.5.weight, %self.model1_1.5.bias, %self.model1_1.5.running_mean, %self.model1_1.5.running_var, %38, %49, %48, %56)
+  %454 : Tensor = aten::relu_(%input.32)
+  %input0.6 : Tensor = aten::add(%454, %419, %7)
+  %input0.1 : Tensor = aten::_convolution(%input0.6, %self.model1_2.0.conv_block.1.weight, %self.model1_2.0.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.7 : Tensor = aten::batch_norm(%input0.1, %self.model1_2.0.conv_block.2.weight, %self.model1_2.0.conv_block.2.bias, %self.model1_2.0.conv_block.2.running_mean, %self.model1_2.0.conv_block.2.running_var, %38, %49, %48, %56)
+  %488 : Tensor = aten::relu_(%input.7)
+  %input.9 : Tensor = aten::_convolution(%488, %self.model1_2.0.conv_block.5.weight, %self.model1_2.0.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %496 : Tensor = aten::batch_norm(%input.9, %self.model1_2.0.conv_block.6.weight, %self.model1_2.0.conv_block.6.bias, %self.model1_2.0.conv_block.6.running_mean, %self.model1_2.0.conv_block.6.running_var, %38, %49, %48, %56)
+  %497 : Tensor = aten::add(%input0.6, %496, %7)
+  %input.11 : Tensor = aten::_convolution(%497, %self.model1_2.1.conv_block.1.weight, %self.model1_2.1.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.13 : Tensor = aten::batch_norm(%input.11, %self.model1_2.1.conv_block.2.weight, %self.model1_2.1.conv_block.2.bias, %self.model1_2.1.conv_block.2.running_mean, %self.model1_2.1.conv_block.2.running_var, %38, %49, %48, %56)
+  %513 : Tensor = aten::relu_(%input.13)
+  %input.15 : Tensor = aten::_convolution(%513, %self.model1_2.1.conv_block.5.weight, %self.model1_2.1.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %521 : Tensor = aten::batch_norm(%input.15, %self.model1_2.1.conv_block.6.weight, %self.model1_2.1.conv_block.6.bias, %self.model1_2.1.conv_block.6.running_mean, %self.model1_2.1.conv_block.6.running_var, %38, %49, %48, %56)
+  %522 : Tensor = aten::add(%497, %521, %7)
+  %input.34 : Tensor = aten::_convolution(%522, %self.model1_2.2.conv_block.1.weight, %self.model1_2.2.conv_block.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %input.4 : Tensor = aten::batch_norm(%input.34, %self.model1_2.2.conv_block.2.weight, %self.model1_2.2.conv_block.2.bias, %self.model1_2.2.conv_block.2.running_mean, %self.model1_2.2.conv_block.2.running_var, %38, %49, %48, %56)
+  %539 : Tensor = aten::relu_(%input.4)
+  %input.17 : Tensor = aten::_convolution(%539, %self.model1_2.2.conv_block.5.weight, %self.model1_2.2.conv_block.5.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %547 : Tensor = aten::batch_norm(%input.17, %self.model1_2.2.conv_block.6.weight, %self.model1_2.2.conv_block.6.bias, %self.model1_2.2.conv_block.6.running_mean, %self.model1_2.2.conv_block.6.running_var, %38, %49, %48, %56)
+  %548 : Tensor = aten::add(%522, %547, %7)
+  %input.19 : Tensor = aten::_convolution(%548, %self.model1_2.3.weight, %self.model1_2.3.bias, %36, %37, %37, %56, %37, %7, %56, %38, %56, %56)
+  %input.36 : Tensor = aten::batch_norm(%input.19, %self.model1_2.4.weight, %self.model1_2.4.bias, %self.model1_2.4.running_mean, %self.model1_2.4.running_var, %38, %49, %48, %56)
+  %557 : Tensor = aten::relu_(%input.36)
+  %input.2 : Tensor = aten::_convolution(%557, %self.refine512.0.weight, %self.refine512.0.bias, %36, %37, %37, %56, %37, %7, %56, %38, %56, %56)
+  %input.38 : Tensor = aten::batch_norm(%input.2, %self.refine512.1.weight, %self.refine512.1.bias, %self.refine512.1.running_mean, %self.refine512.1.running_var, %38, %49, %48, %56)
+  %576 : Tensor = aten::relu_(%input.38)
+  %input.1 : Tensor = aten::_convolution(%576, %self.to_res.1.weight, %self.to_res.1.bias, %37, %37, %37, %38, %47, %7, %56, %38, %56, %56)
+  %589 : Tensor = aten::tanh(%input.1)
+  %24 : Tensor = aten::slice(%589, %5, %5, %6, %7)
+  %25 : Tensor = aten::slice(%24, %7, %5, %8, %7)
+  %26 : Tensor = aten::slice(%25, %9, %5, %6, %7)
+  %27 : Tensor = aten::slice(%26, %8, %5, %6, %7)
+  %28 : Tensor = aten::slice(%589, %5, %5, %6, %7)
+  %29 : Tensor = aten::slice(%28, %7, %8, %10, %7)
+  %30 : Tensor = aten::slice(%29, %9, %5, %6, %7)
+  %31 : Tensor = aten::slice(%30, %8, %5, %6, %7)
+  %32 : Tensor = aten::add(%31, %4, %7)
+  %33 : Tensor = aten::div(%32, %3)
+  %34 : (Tensor, Tensor) = prim::TupleConstruct(%27, %33)
+  return (%34)
+
+DOT Graph:
+digraph G {
+"input.10" -> "aten::avg_pool2d---252";
+"aten::avg_pool2d---252" -> "input0.8";
+"input0.8" -> "aten::_convolution---253";
+"aten::_convolution---253" -> "input.33";
+"input.33" -> "aten::batch_norm---254";
+"aten::batch_norm---254" -> "input.21";
+"input.21" -> "aten::relu_---255";
+"aten::relu_---255" -> "84";
+"84" -> "aten::_convolution---256";
+"aten::_convolution---256" -> "input.23";
+"input.23" -> "aten::batch_norm---257";
+"aten::batch_norm---257" -> "input.25";
+"input.25" -> "aten::relu_---258";
+"aten::relu_---258" -> "95";
+"95" -> "aten::_convolution---259";
+"aten::_convolution---259" -> "input.27";
+"input.27" -> "aten::batch_norm---260";
+"aten::batch_norm---260" -> "input.29";
+"input.29" -> "aten::relu_---261";
+"aten::relu_---261" -> "106";
+"106" -> "aten::_convolution---262";
+"aten::_convolution---262" -> "input.35";
+"input.35" -> "aten::batch_norm---263";
+"aten::batch_norm---263" -> "input.37";
+"input.37" -> "aten::relu_---264";
+"aten::relu_---264" -> "117";
+"117" -> "aten::_convolution---265";
+"aten::_convolution---265" -> "input.57";
+"input.57" -> "aten::batch_norm---266";
+"aten::batch_norm---266" -> "input.59";
+"input.59" -> "aten::relu_---267";
+"aten::relu_---267" -> "135";
+"135" -> "aten::_convolution---268";
+"aten::_convolution---268" -> "input.61";
+"input.61" -> "aten::batch_norm---269";
+"aten::batch_norm---269" -> "143";
+"117" -> "aten::add---270";
+"143" -> "aten::add---270";
+"aten::add---270" -> "144";
+"144" -> "aten::_convolution---271";
+"aten::_convolution---271" -> "input.63";
+"input.63" -> "aten::batch_norm---272";
+"aten::batch_norm---272" -> "input.65";
+"input.65" -> "aten::relu_---273";
+"aten::relu_---273" -> "158";
+"158" -> "aten::_convolution---274";
+"aten::_convolution---274" -> "input.67";
+"input.67" -> "aten::batch_norm---275";
+"aten::batch_norm---275" -> "166";
+"144" -> "aten::add---276";
+"166" -> "aten::add---276";
+"aten::add---276" -> "167";
+"167" -> "aten::_convolution---277";
+"aten::_convolution---277" -> "input.22";
+"input.22" -> "aten::batch_norm---278";
+"aten::batch_norm---278" -> "input.28";
+"input.28" -> "aten::relu_---279";
+"aten::relu_---279" -> "181";
+"181" -> "aten::_convolution---280";
+"aten::_convolution---280" -> "input.30";
+"input.30" -> "aten::batch_norm---281";
+"aten::batch_norm---281" -> "189";
+"167" -> "aten::add---282";
+"189" -> "aten::add---282";
+"aten::add---282" -> "190";
+"190" -> "aten::_convolution---283";
+"aten::_convolution---283" -> "input.41";
+"input.41" -> "aten::batch_norm---284";
+"aten::batch_norm---284" -> "input.43";
+"input.43" -> "aten::relu_---285";
+"aten::relu_---285" -> "204";
+"204" -> "aten::_convolution---286";
+"aten::_convolution---286" -> "input.39";
+"input.39" -> "aten::batch_norm---287";
+"aten::batch_norm---287" -> "212";
+"190" -> "aten::add---288";
+"212" -> "aten::add---288";
+"aten::add---288" -> "213";
+"213" -> "aten::norm---289";
+"aten::norm---289" -> "214";
+"214" -> "aten::clamp_min---290";
+"aten::clamp_min---290" -> "215";
+"215" -> "aten::expand_as---291";
+"213" -> "aten::expand_as---291";
+"aten::expand_as---291" -> "denom.1";
+"213" -> "aten::div---292";
+"denom.1" -> "aten::div---292";
+"aten::div---292" -> "res4.1";
+"y.2" -> "aten::size---293";
+"aten::size---293" -> "218";
+"218" -> "prim::ListConstruct---294";
+"prim::ListConstruct---294" -> "219";
+"y.2" -> "aten::view---295";
+"219" -> "aten::view---295";
+"aten::view---295" -> "input.31";
+"input.31" -> "aten::norm---296";
+"aten::norm---296" -> "221";
+"221" -> "aten::clamp_min---297";
+"aten::clamp_min---297" -> "222";
+"222" -> "aten::expand_as---298";
+"input.31" -> "aten::expand_as---298";
+"aten::expand_as---298" -> "denom0.1";
+"input.31" -> "aten::div---299";
+"denom0.1" -> "aten::div---299";
+"aten::div---299" -> "input1.1";
+"input1.1" -> "aten::upsample_nearest2d---300";
+"aten::upsample_nearest2d---300" -> "y.1";
+"res4.1" -> "prim::ListConstruct---301";
+"y.1" -> "prim::ListConstruct---301";
+"prim::ListConstruct---301" -> "226";
+"226" -> "aten::cat---302";
+"aten::cat---302" -> "input2.1";
+"input2.1" -> "aten::_convolution---303";
+"aten::_convolution---303" -> "input0.2";
+"input0.2" -> "aten::batch_norm---304";
+"aten::batch_norm---304" -> "input.45";
+"input.45" -> "aten::relu_---305";
+"aten::relu_---305" -> "236";
+"236" -> "aten::_convolution---306";
+"aten::_convolution---306" -> "input.49";
+"input.49" -> "aten::batch_norm---307";
+"aten::batch_norm---307" -> "input.51";
+"input.51" -> "aten::relu_---308";
+"aten::relu_---308" -> "251";
+"251" -> "aten::_convolution---309";
+"aten::_convolution---309" -> "input.47";
+"input.47" -> "aten::batch_norm---310";
+"aten::batch_norm---310" -> "259";
+"236" -> "aten::add---311";
+"259" -> "aten::add---311";
+"aten::add---311" -> "260";
+"260" -> "aten::norm---312";
+"aten::norm---312" -> "261";
+"261" -> "aten::clamp_min---313";
+"aten::clamp_min---313" -> "262";
+"262" -> "aten::expand_as---314";
+"260" -> "aten::expand_as---314";
+"aten::expand_as---314" -> "denom1.1";
+"260" -> "aten::div---315";
+"denom1.1" -> "aten::div---315";
+"aten::div---315" -> "res5.1";
+"res5.1" -> "prim::ListConstruct---316";
+"y.1" -> "prim::ListConstruct---316";
+"prim::ListConstruct---316" -> "265";
+"265" -> "aten::cat---317";
+"aten::cat---317" -> "input3.1";
+"input3.1" -> "aten::_convolution---318";
+"aten::_convolution---318" -> "input0.4";
+"input0.4" -> "aten::batch_norm---319";
+"aten::batch_norm---319" -> "input.53";
+"input.53" -> "aten::relu_---320";
+"aten::relu_---320" -> "275";
+"275" -> "aten::_convolution---321";
+"aten::_convolution---321" -> "input.69";
+"input.69" -> "aten::batch_norm---322";
+"aten::batch_norm---322" -> "input.71";
+"input.71" -> "aten::relu_---323";
+"aten::relu_---323" -> "290";
+"290" -> "aten::_convolution---324";
+"aten::_convolution---324" -> "input.55";
+"input.55" -> "aten::batch_norm---325";
+"aten::batch_norm---325" -> "298";
+"275" -> "aten::add---326";
+"298" -> "aten::add---326";
+"aten::add---326" -> "299";
+"299" -> "aten::norm---327";
+"aten::norm---327" -> "300";
+"300" -> "aten::clamp_min---328";
+"aten::clamp_min---328" -> "301";
+"301" -> "aten::expand_as---329";
+"299" -> "aten::expand_as---329";
+"aten::expand_as---329" -> "denom2.1";
+"299" -> "aten::div---330";
+"denom2.1" -> "aten::div---330";
+"aten::div---330" -> "res6.1";
+"res6.1" -> "prim::ListConstruct---331";
+"y.1" -> "prim::ListConstruct---331";
+"prim::ListConstruct---331" -> "304";
+"304" -> "aten::cat---332";
+"aten::cat---332" -> "input4.1";
+"input4.1" -> "aten::_convolution---333";
+"aten::_convolution---333" -> "input0.10";
+"input0.10" -> "aten::batch_norm---334";
+"aten::batch_norm---334" -> "input.73";
+"input.73" -> "aten::relu_---335";
+"aten::relu_---335" -> "314";
+"314" -> "aten::_convolution---336";
+"aten::_convolution---336" -> "input.3";
+"input.3" -> "aten::batch_norm---337";
+"aten::batch_norm---337" -> "input.5";
+"input.5" -> "aten::relu_---338";
+"aten::relu_---338" -> "331";
+"331" -> "aten::_convolution---339";
+"aten::_convolution---339" -> "input.14";
+"input.14" -> "aten::batch_norm---340";
+"aten::batch_norm---340" -> "339";
+"314" -> "aten::add---341";
+"339" -> "aten::add---341";
+"aten::add---341" -> "340";
+"340" -> "aten::_convolution---342";
+"aten::_convolution---342" -> "input.16";
+"input.16" -> "aten::batch_norm---343";
+"aten::batch_norm---343" -> "input.18";
+"input.18" -> "aten::relu_---344";
+"aten::relu_---344" -> "354";
+"354" -> "aten::_convolution---345";
+"aten::_convolution---345" -> "input.20";
+"input.20" -> "aten::batch_norm---346";
+"aten::batch_norm---346" -> "362";
+"340" -> "aten::add---347";
+"362" -> "aten::add---347";
+"aten::add---347" -> "363";
+"363" -> "aten::_convolution---348";
+"aten::_convolution---348" -> "input.75";
+"input.75" -> "aten::batch_norm---349";
+"aten::batch_norm---349" -> "input.8";
+"input.8" -> "aten::relu_---350";
+"aten::relu_---350" -> "377";
+"377" -> "aten::_convolution---351";
+"aten::_convolution---351" -> "input.77";
+"input.77" -> "aten::batch_norm---352";
+"aten::batch_norm---352" -> "385";
+"363" -> "aten::add---353";
+"385" -> "aten::add---353";
+"aten::add---353" -> "386";
+"386" -> "aten::_convolution---354";
+"aten::_convolution---354" -> "input.79";
+"input.79" -> "aten::batch_norm---355";
+"aten::batch_norm---355" -> "input.81";
+"input.81" -> "aten::relu_---356";
+"aten::relu_---356" -> "397";
+"397" -> "aten::_convolution---357";
+"aten::_convolution---357" -> "input.83";
+"input.83" -> "aten::batch_norm---358";
+"aten::batch_norm---358" -> "input.85";
+"input.85" -> "aten::relu_---359";
+"aten::relu_---359" -> "408";
+"408" -> "aten::_convolution---360";
+"aten::_convolution---360" -> "input.24";
+"input.24" -> "aten::batch_norm---361";
+"aten::batch_norm---361" -> "input.12";
+"input.12" -> "aten::relu_---362";
+"aten::relu_---362" -> "419";
+"input.10" -> "aten::_convolution---363";
+"aten::_convolution---363" -> "input0.12";
+"input0.12" -> "aten::batch_norm---364";
+"aten::batch_norm---364" -> "input.26";
+"input.26" -> "aten::relu_---365";
+"aten::relu_---365" -> "445";
+"445" -> "aten::_convolution---366";
+"aten::_convolution---366" -> "input.6";
+"input.6" -> "aten::batch_norm---367";
+"aten::batch_norm---367" -> "input.32";
+"input.32" -> "aten::relu_---368";
+"aten::relu_---368" -> "454";
+"454" -> "aten::add---369";
+"419" -> "aten::add---369";
+"aten::add---369" -> "input0.6";
+"input0.6" -> "aten::_convolution---370";
+"aten::_convolution---370" -> "input0.1";
+"input0.1" -> "aten::batch_norm---371";
+"aten::batch_norm---371" -> "input.7";
+"input.7" -> "aten::relu_---372";
+"aten::relu_---372" -> "488";
+"488" -> "aten::_convolution---373";
+"aten::_convolution---373" -> "input.9";
+"input.9" -> "aten::batch_norm---374";
+"aten::batch_norm---374" -> "496";
+"input0.6" -> "aten::add---375";
+"496" -> "aten::add---375";
+"aten::add---375" -> "497";
+"497" -> "aten::_convolution---376";
+"aten::_convolution---376" -> "input.11";
+"input.11" -> "aten::batch_norm---377";
+"aten::batch_norm---377" -> "input.13";
+"input.13" -> "aten::relu_---378";
+"aten::relu_---378" -> "513";
+"513" -> "aten::_convolution---379";
+"aten::_convolution---379" -> "input.15";
+"input.15" -> "aten::batch_norm---380";
+"aten::batch_norm---380" -> "521";
+"497" -> "aten::add---381";
+"521" -> "aten::add---381";
+"aten::add---381" -> "522";
+"522" -> "aten::_convolution---382";
+"aten::_convolution---382" -> "input.34";
+"input.34" -> "aten::batch_norm---383";
+"aten::batch_norm---383" -> "input.4";
+"input.4" -> "aten::relu_---384";
+"aten::relu_---384" -> "539";
+"539" -> "aten::_convolution---385";
+"aten::_convolution---385" -> "input.17";
+"input.17" -> "aten::batch_norm---386";
+"aten::batch_norm---386" -> "547";
+"522" -> "aten::add---387";
+"547" -> "aten::add---387";
+"aten::add---387" -> "548";
+"548" -> "aten::_convolution---388";
+"aten::_convolution---388" -> "input.19";
+"input.19" -> "aten::batch_norm---389";
+"aten::batch_norm---389" -> "input.36";
+"input.36" -> "aten::relu_---390";
+"aten::relu_---390" -> "557";
+"557" -> "aten::_convolution---391";
+"aten::_convolution---391" -> "input.2";
+"input.2" -> "aten::batch_norm---392";
+"aten::batch_norm---392" -> "input.38";
+"input.38" -> "aten::relu_---393";
+"aten::relu_---393" -> "576";
+"576" -> "aten::_convolution---394";
+"aten::_convolution---394" -> "input.1";
+"input.1" -> "aten::tanh---395";
+"aten::tanh---395" -> "589";
+"589" -> "aten::slice---396";
+"aten::slice---396" -> "24";
+"24" -> "aten::slice---397";
+"aten::slice---397" -> "25";
+"25" -> "aten::slice---398";
+"aten::slice---398" -> "26";
+"26" -> "aten::slice---399";
+"aten::slice---399" -> "27";
+"589" -> "aten::slice---400";
+"aten::slice---400" -> "28";
+"28" -> "aten::slice---401";
+"aten::slice---401" -> "29";
+"29" -> "aten::slice---402";
+"aten::slice---402" -> "30";
+"30" -> "aten::slice---403";
+"aten::slice---403" -> "31";
+"31" -> "aten::add---404";
+"aten::add---404" -> "32";
+"32" -> "aten::div---405";
+"aten::div---405" -> "33";
+"27" -> "prim::TupleConstruct---406";
+"33" -> "prim::TupleConstruct---406";
+"prim::TupleConstruct---406" -> "34";
+}
+
+aten::avg_pool2d   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+aten::size   true
+prim::ListConstruct   true
+aten::view   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+aten::upsample_nearest2d   true
+prim::ListConstruct   true
+aten::cat   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+prim::ListConstruct   true
+aten::cat   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+prim::ListConstruct   true
+aten::cat   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::tanh   false
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::add   true
+aten::div   true
+prim::TupleConstruct   false
++++++++++++++++++++ after seg +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
++++++++++++++++++++ after resolve +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
++++++++++++++++++++ after register +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
++++++++++++++++++++ after erase +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
++++++++++++++++++++ after erase2 +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+aten::avg_pool2d   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+aten::size   true
+prim::ListConstruct   true
+aten::view   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+aten::upsample_nearest2d   true
+prim::ListConstruct   true
+aten::cat   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+prim::ListConstruct   true
+aten::cat   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::norm   false
+aten::clamp_min   false
+aten::expand_as   false
+aten::div   true
+prim::ListConstruct   true
+aten::cat   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::add   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::batch_norm   true
+aten::relu_   true
+aten::_convolution   true
+aten::tanh   false
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::slice   true
+aten::add   true
+aten::div   true
+prim::TupleConstruct   false
++++++++++++++++++++ after seg +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
++++++++++++++++++++ after resolve +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
++++++++++++++++++++ after register +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:3 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:0 +++++++++++++++++++++++++
++++++++++++++++++++ after erase +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:4 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:10 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
++++++++++++++++++++ after erase2 +++++++++++++++++++
+++++++++++++++++++++++++ size:37 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:13 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:12 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+++++++++++++++++++++++++ size:65 +++++++++++++++++++++++++
+++++++++++++++++++++++++ target:1 +++++++++++++++++++++++++
+compile exception:default_program(18): error: expected a ")"
+
+default_program(18): error: extra text after expected end of number
+
+default_program(18): error: extra text after expected end of number
+
+default_program(18): error: extra text after expected end of number
+
+default_program(18): error: extra text after expected end of number
+
+default_program(20): error: expected a ";"
+
+default_program(20): error: extra text after expected end of number
+
+default_program(20): error: extra text after expected end of number
+
+default_program(21): error: "const_self" has already been declared in the current scope
+
+default_program(21): error: expected a ";"
+
+default_program(21): error: extra text after expected end of number
+
+default_program(21): error: extra text after expected end of number
+
+default_program(24): error: expression must have class type
+
+default_program(24): error: extra text after expected end of number
+
+default_program(24): error: expected a ")"
+
+default_program(25): error: expression must have class type
+
+default_program(25): error: extra text after expected end of number
+
+default_program(25): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(20): warning: variable "const_self" was declared but never referenced
+
+30 errors detected in the compilation of "default_program".
+
+nvrtc compilation failed: 
+
+#define NAN __int_as_float(0x7fffffff)
+#define POS_INFINITY __int_as_float(0x7f800000)
+#define NEG_INFINITY __int_as_float(0xff800000)
+
+
+template<typename T>
+__device__ T maximum(T a, T b) {
+  return isnan(a) ? a : (a > b ? a : b);
+}
+
+template<typename T>
+__device__ T minimum(T a, T b) {
+  return isnan(a) ? a : (a < b ? a : b);
+}
+
+extern "C" __global__
+void fused_batch_norm_add(float* t_, float* tinput_61, float* aten_add, float* const_self.model.res1234.0.conv_block.6.running_var, float* const_self.model.res1234.0.conv_block.6.running_mean, float* const_self.model.res1234.0.conv_block.6.bias, float* const_self.model.res1234.0.conv_block.6.weight) {
+{
+  float const_self.model.res1234.0.conv_block.6.running_var_1 = __ldg(const_self.model.res1234.0.conv_block.6.running_var + ((512 * blockIdx.x + threadIdx.x) / 256) % 384);
+  float const_self.model.res1234.0.conv_block.6.weight_1 = __ldg(const_self.model.res1234.0.conv_block.6.weight + ((512 * blockIdx.x + threadIdx.x) / 256) % 384);
+  float v = __ldg(t_ + 512 * blockIdx.x + threadIdx.x);
+  double v_1 = (double)(__ldg(tinput_61 + 512 * blockIdx.x + threadIdx.x));
+  double v_2 = (double)(__ldg(const_self.model.res1234.0.conv_block.6.bias + ((512 * blockIdx.x + threadIdx.x) / 256) % 384));
+  double v_3 = (double)(__ldg(const_self.model.res1234.0.conv_block.6.running_mean + ((512 * blockIdx.x + threadIdx.x) / 256) % 384));
+  aten_add[512 * blockIdx.x + threadIdx.x] = v + (float)(v_1 * ((rsqrt((double)(const_self.model.res1234.0.conv_block.6.running_var_1) + 1e-05)) * (double)(const_self.model.res1234.0.conv_block.6.weight_1)) + (v_2 - v_3 * ((rsqrt((double)(const_self.model.res1234.0.conv_block.6.running_var_1) + 1e-05)) * (double)(const_self.model.res1234.0.conv_block.6.weight_1))));
+}
+}
+
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  default_program(18): error: expected a ")"
+
+default_program(18): error: extra text after expected end of number
+
+default_program(18): error: extra text after expected end of number
+
+default_program(18): error: extra text after expected end of number
+
+default_program(18): error: extra text after expected end of number
+
+default_program(20): error: expected a ";"
+
+default_program(20): error: extra text after expected end of number
+
+default_program(20): error: extra text after expected end of number
+
+default_program(21): error: "const_self" has already been declared in the current scope
+
+default_program(21): error: expected a ";"
+
+default_program(21): error: extra text after expected end of number
+
+default_program(21): error: extra text after expected end of number
+
+default_program(24): error: expression must have class type
+
+default_program(24): error: extra text after expected end of number
+
+default_program(24): error: expected a ")"
+
+default_program(25): error: expression must have class type
+
+default_program(25): error: extra text after expected end of number
+
+default_program(25): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(26): error: expression must have class type
+
+default_program(26): error: extra text after expected end of number
+
+default_program(26): error: expected a ")"
+
+default_program(20): warning: variable "const_self" was declared but never referenced
+
+30 errors detected in the compilation of "default_program".
+
+nvrtc compilation failed: 
+
+#define NAN __int_as_float(0x7fffffff)
+#define POS_INFINITY __int_as_float(0x7f800000)
+#define NEG_INFINITY __int_as_float(0xff800000)
+
+
+template<typename T>
+__device__ T maximum(T a, T b) {
+  return isnan(a) ? a : (a > b ? a : b);
+}
+
+template<typename T>
+__device__ T minimum(T a, T b) {
+  return isnan(a) ? a : (a < b ? a : b);
+}
+
+extern "C" __global__
+void fused_batch_norm_add(float* t_, float* tinput_61, float* aten_add, float* const_self.model.res1234.0.conv_block.6.running_var, float* const_self.model.res1234.0.conv_block.6.running_mean, float* const_self.model.res1234.0.conv_block.6.bias, float* const_self.model.res1234.0.conv_block.6.weight) {
+{
+  float const_self.model.res1234.0.conv_block.6.running_var_1 = __ldg(const_self.model.res1234.0.conv_block.6.running_var + ((512 * blockIdx.x + threadIdx.x) / 256) % 384);
+  float const_self.model.res1234.0.conv_block.6.weight_1 = __ldg(const_self.model.res1234.0.conv_block.6.weight + ((512 * blockIdx.x + threadIdx.x) / 256) % 384);
+  float v = __ldg(t_ + 512 * blockIdx.x + threadIdx.x);
+  double v_1 = (double)(__ldg(tinput_61 + 512 * blockIdx.x + threadIdx.x));
+  double v_2 = (double)(__ldg(const_self.model.res1234.0.conv_block.6.bias + ((512 * blockIdx.x + threadIdx.x) / 256) % 384));
+  double v_3 = (double)(__ldg(const_self.model.res1234.0.conv_block.6.running_mean + ((512 * blockIdx.x + threadIdx.x) / 256) % 384));
+  aten_add[512 * blockIdx.x + threadIdx.x] = v + (float)(v_1 * ((rsqrt((double)(const_self.model.res1234.0.conv_block.6.running_var_1) + 1e-05)) * (double)(const_self.model.res1234.0.conv_block.6.weight_1)) + (v_2 - v_3 * ((rsqrt((double)(const_self.model.res1234.0.conv_block.6.running_var_1) + 1e-05)) * (double)(const_self.model.res1234.0.conv_block.6.weight_1))));
+}
+}
+

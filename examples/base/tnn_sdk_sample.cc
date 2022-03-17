@@ -305,7 +305,7 @@ int BenchResult::AddTime(float time) {
 
 std::string BenchResult::Description() {
     std::ostringstream ostr;
-    ostr << "min = " << min << "  max = " << max << "  avg = " << avg;
+    ostr << std::fixed << std::setprecision(2) << "min = " << min << "  max = " << max << "  avg = " << avg;
 
     if (status != TNN_NS::TNN_OK) {
         ostr << "\nerror = " << status.description();
@@ -321,6 +321,7 @@ DeviceType TNNSDKUtils::GetFallBackDeviceType(DeviceType dev) {
             return DEVICE_NAIVE;
         case DEVICE_RK_NPU:
         case DEVICE_HUAWEI_NPU:
+        case DEVICE_APPLE_NPU:
         case DEVICE_METAL:
         case DEVICE_OPENCL:
         case DEVICE_ATLAS:
@@ -478,6 +479,8 @@ Status TNNSDKSample::WarpAffine(std::shared_ptr<TNN_NS::Mat> src, std::shared_pt
         btype = BORDER_TYPE_REFLECT;
     } else if(border_type == TNNBorderEdge) {
         btype = BORDER_TYPE_EDGE;
+    } else if(border_type == TNNBorderTransparent) {
+        btype = BORDER_TYPE_TRANSPARENT;
     }
     WarpAffineParam param;
     param.interp_type = itype;
@@ -592,12 +595,11 @@ TNN_NS::Status TNNSDKSample::Init(std::shared_ptr<TNNSDKOption> option) {
     }
     else if (option->compute_units == TNNComputeUnitsHuaweiNPU) {
         device_type_      = TNN_NS::DEVICE_HUAWEI_NPU;
-#if defined(__APPLE__) && TARGET_OS_IPHONE
-        device_type_ = TNN_NS::DEVICE_METAL;
-#else
-        device_type_      = TNN_NS::DEVICE_HUAWEI_NPU;
-#endif
-    } else if (option->compute_units == TNNComputeUnitsNaive) {
+    }
+    else if (option->compute_units == TNNComputeUnitsAppleNPU) {
+        device_type_      = TNN_NS::DEVICE_APPLE_NPU;
+    }
+    else if (option->compute_units == TNNComputeUnitsNaive) {
         device_type_ = TNN_NS::DEVICE_NAIVE;
     }
     
@@ -607,14 +609,19 @@ TNN_NS::Status TNNSDKSample::Init(std::shared_ptr<TNNSDKOption> option) {
         network_config.library_path = {option->library_path};
         network_config.device_type  = device_type_;
         network_config.precision = option->precision;
-        network_config.cache_path = "/sdcard/";
+        network_config.cache_path = option->cache_path;
         if(device_type_ == TNN_NS::DEVICE_HUAWEI_NPU){
             network_config.network_type = NETWORK_TYPE_HUAWEI_NPU;
-        } else if (option->compute_units == TNNComputeUnitsCPU) {
+        }
+        else if (option->compute_units == TNNComputeUnitsAppleNPU) {
+            network_config.network_type = NETWORK_TYPE_COREML;
+        }
+        else if (option->compute_units == TNNComputeUnitsCPU) {
 #if defined(_OPENVINO_)
             network_config.network_type = NETWORK_TYPE_OPENVINO;
 #endif
-        } else if (device_type_ == TNN_NS::DEVICE_CUDA) {
+        }
+        else if (device_type_ == TNN_NS::DEVICE_CUDA) {
             network_config.network_type = NETWORK_TYPE_TENSORRT;
         }
         std::shared_ptr<TNN_NS::Instance> instance;
@@ -626,8 +633,11 @@ TNN_NS::Status TNNSDKSample::Init(std::shared_ptr<TNNSDKOption> option) {
         if (!check_npu_ && (status != TNN_NS::TNN_OK || !instance)) {
             // try device_arm
             if (option->compute_units >= TNNComputeUnitsGPU) {
+                LOGE("**********Warning*********\n");
+                LOGE("CreateInst failed for compute unit (%d), automatically try cpu now\n", option->compute_units);
                 device_type_               = TNN_NS::DEVICE_ARM;
                 network_config.device_type = TNN_NS::DEVICE_ARM;
+                network_config.network_type = TNN_NS::NETWORK_TYPE_DEFAULT;
                 instance                   = net_->CreateInst(network_config, status,  option->input_shapes);
             }
         }
@@ -640,7 +650,10 @@ TNNComputeUnits TNNSDKSample::GetComputeUnits() {
     switch (device_type_) {
         case DEVICE_HUAWEI_NPU:
             return TNNComputeUnitsHuaweiNPU;
+        case DEVICE_APPLE_NPU:
+            return TNNComputeUnitsAppleNPU;
         case DEVICE_METAL:
+            return TNNComputeUnitsGPU;
         case DEVICE_OPENCL:
             return TNNComputeUnitsGPU;
         default:
@@ -797,6 +810,9 @@ TNN_NS::Status TNNSDKSample::Predict(std::shared_ptr<TNNSDKInput> input, std::sh
         status = Status(TNNERR_PARAM_ERR, "input image is empty ,please check!");
         LOGE("input image is empty ,please check!\n");
         return status;
+    }
+    if (!instance_) {
+        return Status(TNNERR_INST_ERR, "TNN instance is null");
     }
     
 #if TNN_SDK_ENABLE_BENCHMARK

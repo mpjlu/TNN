@@ -1,0 +1,6 @@
+../source/tnn/network/tensorrt/layer_builder/conv_layer_builder.cc
+../source/tnn/network/tensorrt/layer_builder/deconv_layer_builder.cc
+../source/tnn/network/tensorrt/tensorrt_network.cc
+       修改：      ../source/tnn/network/torch/register_tnn_op.cc
+#       修改：      ../source/tnn/network/torch/torch_op_converter.cc
+#       修改：      ../source/tnn/network/torch/torch_optimize.cc

@@ -112,6 +112,7 @@ typedef enum {
     DEVICE_ATLAS      = 0x1040,
     DEVICE_HUAWEI_NPU = 0x1050,
     DEVICE_RK_NPU     = 0x1060,
+    DEVICE_APPLE_NPU  = 0x1070,
 
     // General CPU
     DEVICE_GROUP_CPU  = 0x4010,
@@ -135,7 +136,8 @@ typedef enum {
 
 typedef enum {
     MODEL_TYPE_TNN      = 0x0001,
-    MODEL_TYPE_TNNIR    = 0x0002,
+    //reserved for 0x0002
+    MODEL_TYPE_TNNIR    = 0x0010,
     MODEL_TYPE_NCNN     = 0x0100,
     MODEL_TYPE_OPENVINO = 0x1000,
     MODEL_TYPE_COREML   = 0x2000,

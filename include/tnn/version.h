@@ -14,8 +14,14 @@
 #ifndef TNN_INCLUDE_TNN_VERSION_H_
 #define TNN_INCLUDE_TNN_VERSION_H_
 
+<<<<<<< HEAD
 static char *branch_name_tnn = "torch1.9";
 static char *commit_date_tnn = "2022-03-07";
 static char *commit_hash_tnn = "d208b842";
+=======
+static char *branch_name_tnn = "fix_trt_multistream_logger";
+static char *commit_date_tnn = "2022-01-11";
+static char *commit_hash_tnn = "7c2249d2";
+>>>>>>> origin/tnn-torch-subgraph
 
 #endif //TNN_INCLUDE_TNN_VERSION_H_
