@@ -125,6 +125,9 @@ ILayer* ConvolutionTRTPluginLayerBuilder::AddToNetwork(INetworkDefinition* netwo
     bool following_a_concat_layer =
         m_network->m_concat_blob_names.find(in_blob_name) != m_network->m_concat_blob_names.end();
 
+    //TODO: reproduce the bug and verify tensorrt8 has fixed this problem later.
+    following_a_concat_layer = false;
+
     auto pads = paramlist->pads;
     bool symmetric = (pads[0] == pads[1]) && (pads[2] == pads[3]);
     if ((symmetric && paramlist->kernels[0] == 7 && paramlist->kernels[1] == 7 && following_a_concat_layer) ||
