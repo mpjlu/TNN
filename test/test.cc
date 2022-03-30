@@ -149,7 +149,6 @@ namespace test {
  
             Timer timer(model_name + " - " + FLAGS_dt);
 
-            for (int i = 0; i < FLAGS_ic; ++i) {
                 for(auto element : input_converters_map) {
                     auto name = element.first;
                     auto blob_converter = element.second;
@@ -158,6 +157,7 @@ namespace test {
                         return ret;
                     }
                 }
+            for (int i = 0; i < FLAGS_ic; ++i) {
 #if (DUMP_INPUT_BLOB || DUMP_OUTPUT_BLOB)
                 ret = instance->Forward();
 #else
@@ -169,6 +169,7 @@ namespace test {
                     return ret;
                 }
 
+            }
                 bool is_update = CreateBlobMatMap(output_blob_map, 0, output_mat_map);
                 if (is_update) {
                     output_converters_map = CreateBlobConverterMap(output_blob_map);
@@ -183,7 +184,6 @@ namespace test {
                         return ret;
                     }
                 }
-            }
 #if TNN_PROFILE
             instance->FinishProfile(true);
 #endif
