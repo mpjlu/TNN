@@ -504,12 +504,20 @@ public:
 class LinearTorchConverter : public TorchOpConverter {
 public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
-        // aten::linear include batched cases, which is not supported by Inn
-        // Convert aten::linear to matmul + add (with bias), matmul only (without bias)
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type = LAYER_INNER_PRODUCT;
+        layer_info->type_str = "InnerProduct";
+        layer_info->name = node->output(0)->debugName();
+
         const auto& inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param = std::make_shared<InnerProductLayerParam>();
+        auto layer_res = new(InnerProductLayerResource);
         const auto weight = inputs[1];
         const auto bias = inputs[2];
-//<<<<<<< HEAD
 
         auto optional_ivalue = toIValue(weight);
         if (!optional_ivalue) {
@@ -526,96 +534,19 @@ public:
         layer_param->axis = 1;
 
         layer_res->name = layer_info->name;
-//=======
-/*
-	auto weight_buf = getValue(weight);
+
         auto bias_buf = getValue(bias);
-        const auto data_type = weight_buf.GetDataType();
-        const bool with_bias = bias_buf.GetBytesSize()!=0;
-        std::string matmul_out_name = with_bias ? node->output(0)->debugName()+"_matmul" : node->output(0)->debugName();
-
-        // Matmul layer
-        {
-            std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-            layer_info->type = LAYER_MATMUL;
-            layer_info->type_str = "MatMul";
-            layer_info->name = matmul_out_name;
-
-            layer_info->inputs.push_back(node->inputs()[0]->debugName());
-            layer_info->outputs.push_back(matmul_out_name);
-
-            const int dim0 = weight_buf.GetBufferDims()[0];
-            const int dim1 = weight_buf.GetBufferDims()[1];
-            RawBuffer transposed_weight_buf;
-            // TODO: Naive 2D weight Transpose here, replace this one with a new faster one in the future.
-            if (data_type==DATA_TYPE_HALF) {
-                auto *weight_ptr = weight_buf.force_to<fp16_t *>();
-                const int weight_byte_size = sizeof(fp16_t)*dim0*dim1;
-                fp16_t *temp_weight_ptr = (fp16_t*)std::malloc(weight_byte_size);
-                for (int i=0; i<dim0; i++) {
-                    for (int j=0; j<dim1; j++) {
-                        temp_weight_ptr[j*dim0+i] = weight_ptr[i*dim1+j];
-                    }
-                }
-                std::memcpy(weight_ptr, temp_weight_ptr, weight_byte_size);
-                transposed_weight_buf = RawBuffer(weight_byte_size, (char*)(weight_ptr), {dim1, dim0});
-                transposed_weight_buf.SetDataType(DATA_TYPE_HALF);
-                std::free(temp_weight_ptr);
-            } else {
-                // FLOAT
-                auto *weight_ptr = weight_buf.force_to<float *>();
-                const int weight_byte_size = sizeof(float)*dim0*dim1;
-                float *temp_weight_ptr = (float*)std::malloc(weight_byte_size);
-                for (int i=0; i<dim0; i++) {
-                    for (int j=0; j<dim1; j++) {
-                        temp_weight_ptr[j*dim0+i] = weight_ptr[i*dim1+j];
-                    }
-                }
-                std::memcpy(weight_ptr, temp_weight_ptr, weight_byte_size);
-                transposed_weight_buf = RawBuffer(weight_byte_size, (char*)(weight_ptr), {dim1, dim0});
-                std::free(temp_weight_ptr);
-            }
->>>>>>> origin/tnn-torch-subgraph
-*/
-            auto layer_res = new MatMulLayerResource();
-            layer_res->weight = transposed_weight_buf;
-
-            auto layer_param = std::make_shared<MatMulLayerParam>();
-            layer_param->weight_position = 1;
-            layer_param->matrix_b_dims = transposed_weight_buf.GetBufferDims();
-            layer_info->param = layer_param;
-
-            ADD_INPUTS_AND_OUTPUTS;
-
-            net_structure->layers.push_back(layer_info);
-            net_resource->resource_map[layer_info->name] = std::shared_ptr<LayerResource>(layer_res);
-        } // Matmul
-
-        // add bias if needed.
-        if (with_bias) {
-            std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-            layer_info->type = LAYER_ADD;
-            layer_info->type_str = "Add";
-            layer_info->name = node->output(0)->debugName();
-
-            // bias->node()->kind() == at::prim::Constant, weight here refers to "bias" of linear.
-            auto layer_param = std::make_shared<MultidirBroadcastLayerParam>();
-            layer_param->weight_input_index = 1;
-            layer_info->param = layer_param;
-            layer_info->inputs.push_back(matmul_out_name);
-            layer_info->outputs.push_back(node->outputs()[0]->debugName());
-
-            auto layer_res = new EltwiseLayerResource();
-            net_resource->resource_map[layer_info->name] = std::shared_ptr<LayerResource>(layer_res);
-
-            auto bias_buf = getValue(bias);
-            layer_res->element_handle = bias_buf;
-            layer_res->element_shape  = bias_buf.GetBufferDims();
-
-            net_structure->layers.push_back(layer_info);
-
-            ADD_INPUTS_AND_OUTPUTS;
+        if (bias_buf.GetBytesSize() != 0) {
+            layer_param->has_bias = 1;
+            layer_res->bias_handle = ConvertHalfHandle(bias_buf);
         }
+
+        layer_info->param = layer_param;
+
+        net_structure->layers.push_back(layer_info);
+        net_resource->resource_map[layer_info->name] = std::shared_ptr<LayerResource>(layer_res);
+
+        ADD_INPUTS_AND_OUTPUTS;
 
         return TNN_OK;
     }
@@ -1909,7 +1840,7 @@ REGISTER_TORCH_OP_CONVERTER(Binary, aten, floordiv)
 REGISTER_TORCH_OP_CONVERTER(Binary, aten, eq)
 REGISTER_TORCH_OP_CONVERTER(Binary, aten, gt)
 REGISTER_TORCH_OP_CONVERTER(Clip, aten, clamp)
-REGISTER_TORCH_OP_CONVERTER(Concat, aten, cat)
+//REGISTER_TORCH_OP_CONVERTER(Concat, aten, cat)
 REGISTER_TORCH_OP_CONVERTER(Conv2D, aten, conv2d)
 REGISTER_TORCH_OP_CONVERTER(_Conv, aten, _convolution)
 REGISTER_TORCH_OP_CONVERTER(Flatten, aten, flatten)
@@ -1941,6 +1872,8 @@ REGISTER_TORCH_OP_CONVERTER(To, aten, to)
 REGISTER_TORCH_OP_CONVERTER(TopK, aten, topk)
 REGISTER_TORCH_OP_CONVERTER(Transpose, aten, transpose)
 // REGISTER_TORCH_OP_CONVERTER(Upsample, aten, upsample_bilinear2d)
+
+//comment out by peng for test swapface
 REGISTER_TORCH_OP_CONVERTER(Upsample, aten, upsample_nearest2d)
 REGISTER_TORCH_OP_CONVERTER(Unsqueeze, aten, unsqueeze)
 REGISTER_TORCH_OP_CONVERTER(Reduce, aten, mean)
