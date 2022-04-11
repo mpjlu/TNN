@@ -43,8 +43,13 @@ void RemoveNormClampminExpandasDiv(NetStructure* net_structure, NetResource* net
     auto& layers              = net_structure->layers;
 
     // Normalize <= Norm - Clampmin - Expandas - Div
-    for (auto iter = layers.begin(); iter + 3 != layers.end(); iter++) {
+    std::cout<<"PengLayerSize:"<<layers.size()<<std::endl;
+    for (auto iter = layers.begin(); iter + 3 != layers.end() &&
+         iter != layers.end() &&
+         iter + 1 != layers.end() &&
+         iter + 2 != layers.end() ;  iter++) {
         auto& norm_layer = *iter;
+        std::cout<<"PengLayerType:"<<norm_layer->type<<std::endl;
         if (norm_layer->type != TNN_NS::LAYER_NORM){
             continue;
         }
@@ -79,6 +84,7 @@ void RemoveNormClampminExpandasDiv(NetStructure* net_structure, NetResource* net
         norm_layer->outputs = div_layer->outputs;
         expandas_iter -= 1;
         div_iter -= 1;
+        std::cout<<"PengErase"<<std::endl;
         layers.erase(clampmin_iter, clampmin_iter+3);
     }
 }
