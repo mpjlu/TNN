@@ -118,8 +118,13 @@ ILayer* ConvolutionTRTPluginLayerBuilder::AddToNetwork(INetworkDefinition* netwo
         auto dims = weight_tensor->getDimensions();
         paramlist->kernels[0] = dims.d[3];
         paramlist->kernels[1] = dims.d[2];
-        paramlist->input_channel = dims.d[1];
-        paramlist->output_channel = dims.d[0];
+	if (paramlist->pad_type == 3) {
+            paramlist->input_channel = dims.d[0] / paramlist->group;
+            paramlist->output_channel = dims.d[1] * paramlist->group;
+	} else {
+            paramlist->input_channel = dims.d[1];
+            paramlist->output_channel = dims.d[0];
+	}
     }
     auto in_blob_name = input_blobs_[0]->GetBlobDesc().name;
     bool following_a_concat_layer =

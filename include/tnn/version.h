@@ -14,8 +14,8 @@
 #ifndef TNN_INCLUDE_TNN_VERSION_H_
 #define TNN_INCLUDE_TNN_VERSION_H_
 
-static char *branch_name_tnn = "centernet";
-static char *commit_date_tnn = "2021-12-28";
-static char *commit_hash_tnn = "d36d5a42";
+static char *branch_name_tnn = "torch1.9";
+static char *commit_date_tnn = "2022-03-07";
+static char *commit_hash_tnn = "d208b842";
 
 #endif //TNN_INCLUDE_TNN_VERSION_H_

@@ -13,6 +13,7 @@
 // specific language governing permissions and limitations under the License.
 
 #include "constant_propagation.h"
+#include "vararg_functions.h"
 
 #include <ATen/core/functional.h>
 #include <ATen/core/ivalue.h>
@@ -26,8 +27,8 @@
 #include <torch/csrc/jit/jit_log.h>
 #include <torch/csrc/jit/passes/dead_code_elimination.h>
 #include <torch/csrc/jit/runtime/operator.h>
-#include "vararg_functions.h"
 #include <torch/csrc/utils/memory.h>
+#include <torch/torch.h>
 
 namespace torch {
 namespace jit {
@@ -94,7 +95,11 @@ c10::optional<std::vector<IValue>> runNodeIfInputsAreConstant(
 
       try {
         auto op = n->getOperation();
-        op(stack);
+        #if TORCH_VERSION_MAJOR == 1 && TORCH_VERSION_MINOR <= 9
+          op(&stack);
+        #else 
+          op(stack);
+        #endif 
       } catch (...) {
         return c10::nullopt;
       }

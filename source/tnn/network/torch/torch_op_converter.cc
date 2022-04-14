@@ -79,6 +79,60 @@ public:
     }
 };
 
+class Conv3DTorchConverter : public TorchOpConverter {
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type = LAYER_CONVOLUTION_3D;
+        layer_info->type_str = "Convolution3D";
+        layer_info->name = node->output(0)->debugName();
+
+        const auto& inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+        
+        auto layer_param = std::make_shared<ConvLayerParam>();
+        auto layer_res = new(ConvLayerResource);
+        const auto weight = inputs[1];
+        const auto bias = inputs[2];
+        const auto stride = getValue<std::vector<int64_t>>(inputs[3]);
+        const auto padding = getValue<std::vector<int64_t>>(inputs[4]);
+        const auto dialation = getValue<std::vector<int64_t>>(inputs[5]);
+        const auto group = getValue<int64_t>(inputs[6]);
+        auto weight_buf = getValue(weight);
+        auto shape = weight_buf.GetBufferDims();
+
+        // set param accroding to real value, just test here
+        layer_param->name = layer_info->name;
+        layer_param->pad_type = -1;
+        layer_param->output_channel = shape[0];
+        layer_param->input_channel = shape[1];
+        // order [w, h]
+        layer_param->kernels = {shape[4], shape[3], shape[2]};
+        layer_param->dialations = {(int)dialation[2], (int)dialation[1], (int)dialation[0]};
+        layer_param->strides = {(int)stride[2], (int)stride[1], (int)stride[0]};
+        layer_param->group = group;
+        layer_param->pads = {(int)padding[2], (int)padding[2], (int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
+        layer_res->name = layer_info->name;
+        layer_res->filter_handle = ConvertHalfHandle(weight_buf);
+
+        if (toIValue(bias)->isTensor()) {
+            layer_param->bias      = 1;
+            layer_res->bias_handle = getValue(bias);
+            layer_res->bias_handle = ConvertHalfHandle(layer_res->bias_handle);
+        }
+
+                layer_info->param = layer_param;
+
+        net_structure->layers.push_back(layer_info);
+        net_resource->resource_map[layer_info->name] = std::shared_ptr<LayerResource>(layer_res);
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        return TNN_OK;
+    }
+};
+
 // func: _convolution(Tensor input, Tensor weight, Tensor? bias, int[] stride, int[] padding, int[] dilation, bool transposed, 
 //                    int[] output_padding, int groups, bool benchmark, bool deterministic, bool cudnn_enabled, bool allow_tf32) -> Tensor
 class _ConvTorchConverter : public TorchOpConverter {
@@ -96,65 +150,128 @@ public:
         const auto transposed = getValue<bool>(inputs[6]);
         
         std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-        layer_info->type = transposed ? LAYER_DECONVOLUTION : LAYER_CONVOLUTION;;
-        layer_info->type_str = transposed ? "Deconvolution" : "Convolution";
-        layer_info->name = node->output(0)->debugName();
+        const bool is_3d = getValue<std::vector<int64_t>>(inputs[4]).size() == 3;
+        
+        if (!is_3d) {
+            layer_info->type = transposed ? LAYER_DECONVOLUTION : LAYER_CONVOLUTION;;
+            layer_info->type_str = transposed ? "Deconvolution" : "Convolution";
+            layer_info->name = node->output(0)->debugName();
 
-        layer_info->inputs.push_back(node->inputs()[0]->debugName());
-        layer_info->outputs.push_back(node->outputs()[0]->debugName());
-        auto layer_param = std::make_shared<ConvLayerParam>();
-        auto layer_res = new(ConvLayerResource);
-        const auto weight = inputs[1];
-        const auto bias = inputs[2];
-        const auto stride = getValue<std::vector<int64_t>>(inputs[3]);
-        const auto padding = getValue<std::vector<int64_t>>(inputs[4]);
-        const auto dialation = getValue<std::vector<int64_t>>(inputs[5]);
-        const auto group = getValue<int64_t>(inputs[8]);
-        // const auto transposed = getValue<bool>(inputs[6]);
+            layer_info->inputs.push_back(node->inputs()[0]->debugName());
+            layer_info->outputs.push_back(node->outputs()[0]->debugName());
+            auto layer_param = std::make_shared<ConvLayerParam>();
+            auto layer_res = new(ConvLayerResource);
+            const auto weight = inputs[1];
+            const auto bias = inputs[2];
+            const auto stride = getValue<std::vector<int64_t>>(inputs[3]);
+            const auto padding = getValue<std::vector<int64_t>>(inputs[4]);
+            const auto dialation = getValue<std::vector<int64_t>>(inputs[5]);
+            const auto output_pads = getValue<std::vector<int64_t>>(inputs[7]);
+	    const auto group = getValue<int64_t>(inputs[8]);
+            // const auto transposed = getValue<bool>(inputs[6]);
 
-        // if (transposed) {
-        //     layer_info->type_str = LAYER_DECONVOLUTION;
-        //     std::cout << "deconv" << std::endl;
-        // }
+            // if (transposed) {
+            //     layer_info->type_str = LAYER_DECONVOLUTION;
+            //     std::cout << "deconv" << std::endl;
+            // }
+            if (output_pads.size()>0 && output_pads[0] != 0) {
+                layer_param->pad_type = 3;
+	    } else {
+                layer_param->pad_type = -1;
+	    }
+            auto optional_ivalue = toIValue(weight);
+            if (!optional_ivalue) {
+                layer_param->qat_mode = true;
+                layer_info->inputs.push_back(node->inputs()[1]->debugName());
+                // For Test only
+                layer_param->kernels = {0, 0};
+            } else {
+                auto weight_buf = getValue(weight);
+                auto shape = weight_buf.GetBufferDims();
+	        if (layer_param->pad_type == 3) {
+                    layer_param->output_channel = shape[1] * group;
+                    layer_param->input_channel = shape[0] / group;
+	        } else {
+                    layer_param->output_channel = shape[0];
+                    layer_param->input_channel = shape[1];
+	        }
+                layer_param->kernels = {shape[3], shape[2]};
+                layer_res->filter_handle = ConvertHalfHandle(weight_buf);
+            }
 
-        auto optional_ivalue = toIValue(weight);
-        if (!optional_ivalue) {
-            layer_param->qat_mode = true;
-            layer_info->inputs.push_back(node->inputs()[1]->debugName());
-            // For Test only
-            layer_param->kernels = {0, 0};
+            // set param accroding to real value, just test here
+            layer_param->name = layer_info->name;
+            layer_param->dialations = {(int)dialation[1], (int)dialation[0]};
+            layer_param->strides = {(int)stride[1], (int)stride[0]};
+            layer_param->pads = {(int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
+            layer_param->group = group;
+            layer_res->name = layer_info->name;
+
+            auto bias_buf = getValue(bias);
+            if (bias_buf.GetBytesSize() != 0) {
+                layer_param->bias = 1;
+                layer_res->bias_handle = ConvertHalfHandle(bias_buf);
+            }
+
+            layer_info->param = layer_param;
+
+            net_structure->layers.push_back(layer_info);
+            net_resource->resource_map[layer_info->name] = std::shared_ptr<LayerResource>(layer_res);
+
+            ADD_INPUTS_AND_OUTPUTS;
+
+            return TNN_OK;
         } else {
+            std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+            layer_info->type = LAYER_CONVOLUTION_3D;
+            layer_info->type_str = "Convolution3D";
+            layer_info->name = node->output(0)->debugName();
+
+            const auto& inputs = node->inputs();
+
+            layer_info->inputs.push_back(node->inputs()[0]->debugName());
+            layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+            auto layer_param = std::make_shared<ConvLayerParam>();
+            auto layer_res = new(ConvLayerResource);
+            const auto weight = inputs[1];
+            const auto bias = inputs[2];
+            const auto stride = getValue<std::vector<int64_t>>(inputs[3]);
+            const auto padding = getValue<std::vector<int64_t>>(inputs[4]);
+            const auto dialation = getValue<std::vector<int64_t>>(inputs[5]);
+            const auto group = getValue<int64_t>(inputs[8]);
             auto weight_buf = getValue(weight);
             auto shape = weight_buf.GetBufferDims();
+
+            // set param accroding to real value, just test here
+            layer_param->name = layer_info->name;
+            layer_param->pad_type = -1;
             layer_param->output_channel = shape[0];
             layer_param->input_channel = shape[1];
-            layer_param->kernels = {shape[3], shape[2]};
+            // order [w, h]
+            layer_param->kernels = {shape[4], shape[3], shape[2]};
+            layer_param->dialations = {(int)dialation[2], (int)dialation[1], (int)dialation[0]};
+            layer_param->strides = {(int)stride[2], (int)stride[1], (int)stride[0]};
+            layer_param->group = group;
+            layer_param->pads = {(int)padding[2], (int)padding[2], (int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
+            layer_res->name = layer_info->name;
             layer_res->filter_handle = ConvertHalfHandle(weight_buf);
+
+            auto bias_buf = getValue(bias);
+            if (bias_buf.GetBytesSize() != 0) {
+                layer_param->bias = 1;
+                layer_res->bias_handle = ConvertHalfHandle(bias_buf);
+            }
+
+                    layer_info->param = layer_param;
+
+            net_structure->layers.push_back(layer_info);
+            net_resource->resource_map[layer_info->name] = std::shared_ptr<LayerResource>(layer_res);
+
+            ADD_INPUTS_AND_OUTPUTS;
+
+            return TNN_OK;
         }
-
-        // set param accroding to real value, just test here
-        layer_param->name = layer_info->name;
-        layer_param->pad_type = -1;
-        layer_param->dialations = {(int)dialation[1], (int)dialation[0]};
-        layer_param->strides = {(int)stride[1], (int)stride[0]};
-        layer_param->pads = {(int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
-        layer_param->group = group;
-        layer_res->name = layer_info->name;
-
-        auto bias_buf = getValue(bias);
-        if (bias_buf.GetBytesSize() != 0) {
-            layer_param->bias = 1;
-            layer_res->bias_handle = ConvertHalfHandle(bias_buf);
-        }
-
-        layer_info->param = layer_param;
-
-        net_structure->layers.push_back(layer_info);
-        net_resource->resource_map[layer_info->name] = std::shared_ptr<LayerResource>(layer_res);
-
-        ADD_INPUTS_AND_OUTPUTS;
-
-        return TNN_OK;
     }
 };
 
@@ -164,8 +281,113 @@ class PoolTorchConverter : public TorchOpConverter {
 public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-        layer_info->type = LAYER_POOLING;
-        layer_info->type_str = "Pooling";
+
+        auto is_3d = getValue<std::vector<int64_t>>(node->inputs()[3]).size() == 3;
+        if (!is_3d) {
+            layer_info->type = LAYER_POOLING;
+            layer_info->type_str = "Pooling";
+            layer_info->name = node->output(0)->debugName();
+
+            const auto& inputs = node->inputs();
+
+            layer_info->inputs.push_back(node->inputs()[0]->debugName());
+            layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+            auto layer_param = std::make_shared<PoolingLayerParam>();
+            layer_param->name = layer_info->name;
+            std::string op_type = node->kind().toUnqualString();
+
+            if (op_type.find("adaptive") == std::string::npos) {
+                const auto kernel_size = getValue<std::vector<int64_t>>(inputs[1]);
+                const auto stride = getValue<std::vector<int64_t>>(inputs[2]);
+                const auto padding = getValue<std::vector<int64_t>>(inputs[3]);
+                const auto dialation = getValue<std::vector<int64_t>>(inputs[4]);
+                const auto ceil_mode = getValue<bool>(inputs[5]);
+                
+                layer_param->pad_type = -1;
+                layer_param->kernels_params = {(int)kernel_size[1], (int)kernel_size[0]};
+                layer_param->strides = {(int)stride[1], (int)stride[0]};
+                layer_param->pads = {(int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
+                layer_param->kernel_indexs = {-1, -1};
+                layer_param->kernels = {-1, -1};
+                layer_param->output_shape = {-1, -1};
+                layer_param->ceil_mode = ceil_mode;
+            } else {
+                const auto output_shape = getValue<std::vector<int64_t>>(inputs[1]);
+                layer_param->is_adaptive_pool = 1;
+                layer_param->output_shape = {(int)output_shape[1], (int)output_shape[0]};
+                layer_param->kernels_params = {-1, -1};
+                layer_param->strides = {1, 1};
+                layer_param->pads = {0, 0, 0, 0};
+                layer_param->kernel_indexs = {-1, -1};
+                layer_param->kernels = {-1, -1};
+            }
+
+            layer_info->param = layer_param;
+
+            net_structure->layers.push_back(layer_info);
+
+            ADD_INPUTS_AND_OUTPUTS;
+
+            return TNN_OK;
+        } else {
+            std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+            layer_info->type = LAYER_POOLING_3D;
+            layer_info->type_str = "Pooling3D";
+            layer_info->name = node->output(0)->debugName();
+
+            const auto& inputs = node->inputs();
+
+            layer_info->inputs.push_back(node->inputs()[0]->debugName());
+            layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+            auto layer_param = std::make_shared<PoolingLayerParam>();
+            layer_param->name = layer_info->name;
+            std::string op_type = node->kind().toUnqualString();
+
+            if (op_type.find("adaptive") == std::string::npos) {
+                const auto kernel_size = getValue<std::vector<int64_t>>(inputs[1]);
+                const auto stride = getValue<std::vector<int64_t>>(inputs[2]);
+                const auto padding = getValue<std::vector<int64_t>>(inputs[3]);
+                const auto dialation = getValue<std::vector<int64_t>>(inputs[4]);
+                const auto ceil_mode = getValue<bool>(inputs[5]);
+                
+                layer_param->pad_type = -1;
+                layer_param->kernels_params = {(int)kernel_size[2], (int)kernel_size[1], (int)kernel_size[0]};
+                layer_param->strides = {(int)stride[2], (int)stride[1], (int)stride[0]};
+                layer_param->pads = {(int)padding[2], (int)padding[2], (int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
+                layer_param->kernel_indexs = {-1, -1, -1};
+                layer_param->kernels = {-1, -1, -1};
+                layer_param->output_shape = {-1, -1, -1};
+                layer_param->ceil_mode = ceil_mode;
+            } else {
+                const auto output_shape = getValue<std::vector<int64_t>>(inputs[1]);
+                layer_param->is_adaptive_pool = 1;
+                layer_param->output_shape = {(int)output_shape[2], (int)output_shape[1], (int)output_shape[0]};
+                layer_param->kernels_params = {-1, -1, -1};
+                layer_param->strides = {1, 1, 1};
+                layer_param->pads = {0, 0, 0, 0, 0, 0};
+                layer_param->kernel_indexs = {-1, -1, -1};
+                layer_param->kernels = {-1, -1, -1};
+            }
+
+            layer_info->param = layer_param;
+
+            net_structure->layers.push_back(layer_info);
+
+            ADD_INPUTS_AND_OUTPUTS;
+
+            return TNN_OK;
+        }
+    }
+};
+
+class Pool3DTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type = LAYER_POOLING_3D;
+        layer_info->type_str = "Pooling3D";
         layer_info->name = node->output(0)->debugName();
 
         const auto& inputs = node->inputs();
@@ -185,22 +407,22 @@ public:
             const auto ceil_mode = getValue<bool>(inputs[5]);
             
             layer_param->pad_type = -1;
-            layer_param->kernels_params = {(int)kernel_size[1], (int)kernel_size[0]};
-            layer_param->strides = {(int)stride[1], (int)stride[0]};
-            layer_param->pads = {(int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
-            layer_param->kernel_indexs = {-1, -1};
-            layer_param->kernels = {-1, -1};
-            layer_param->output_shape = {-1, -1};
+            layer_param->kernels_params = {(int)kernel_size[2], (int)kernel_size[1], (int)kernel_size[0]};
+            layer_param->strides = {(int)stride[2], (int)stride[1], (int)stride[0]};
+            layer_param->pads = {(int)padding[2], (int)padding[2], (int)padding[1], (int)padding[1], (int)padding[0], (int)padding[0]};
+            layer_param->kernel_indexs = {-1, -1, -1};
+            layer_param->kernels = {-1, -1, -1};
+            layer_param->output_shape = {-1, -1, -1};
             layer_param->ceil_mode = ceil_mode;
         } else {
             const auto output_shape = getValue<std::vector<int64_t>>(inputs[1]);
             layer_param->is_adaptive_pool = 1;
-            layer_param->output_shape = {(int)output_shape[1], (int)output_shape[0]};
-            layer_param->kernels_params = {-1, -1};
-            layer_param->strides = {1, 1};
-            layer_param->pads = {0, 0, 0, 0};
-            layer_param->kernel_indexs = {-1, -1};
-            layer_param->kernels = {-1, -1};
+            layer_param->output_shape = {(int)output_shape[2], (int)output_shape[1], (int)output_shape[0]};
+            layer_param->kernels_params = {-1, -1, -1};
+            layer_param->strides = {1, 1, 1};
+            layer_param->pads = {0, 0, 0, 0, 0, 0};
+            layer_param->kernel_indexs = {-1, -1, -1};
+            layer_param->kernels = {-1, -1, -1};
         }
 
         layer_info->param = layer_param;
@@ -341,17 +563,26 @@ public:
                 layer_info->type     = LAYER_ADD;
                 layer_info->type_str = "Add";
                 break;
+            case at::aten::sub:
+                layer_info->type     = LAYER_SUB;
+                layer_info->type_str = "Sub";
+                break;
             case at::aten::mul:
                 layer_info->type     = LAYER_MUL;
                 layer_info->type_str = "Mul";
                 break;
             case at::aten::div:
+            case at::aten::floordiv:
                 layer_info->type     = LAYER_DIV;
                 layer_info->type_str = "Div";
                 break;
             case at::aten::gt:
                 layer_info->type     = LAYER_GREATER;
                 layer_info->type_str = "Greater";
+                break;
+            case at::aten::eq:
+                layer_info->type     = LAYER_EQUAL;
+                layer_info->type_str = "Equal";
                 break;
             default:
                 LOGE("Unsupport layer type %s\n", node->kind().toUnqualString());
@@ -624,7 +855,7 @@ public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
         layer_info->type = LAYER_HARDSIGMOID;
-        layer_info->type_str = "Hardsigmoid";
+        layer_info->type_str = "HardSigmoid";
         layer_info->name = node->output(0)->debugName();
 
         const auto& inputs = node->inputs();
@@ -652,7 +883,7 @@ public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
         layer_info->type = LAYER_HARDSWISH;
-        layer_info->type_str = "Hardswish";
+        layer_info->type_str = "HardSwish";
         layer_info->name = node->output(0)->debugName();
 
         const auto& inputs = node->inputs();
@@ -811,6 +1042,29 @@ public:
     }
 };
 
+class CloneTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_CLONE;
+        layer_info->type_str                  = "Clone";
+        layer_info->name                      = node->output(0)->debugName();
+
+        const auto &inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        layer_info->param = std::make_shared<LayerParam>();
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
 class GatherTorchConverter : public TorchOpConverter {
 public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
@@ -914,14 +1168,18 @@ public:
 class SizeTorchConverter : public TorchOpConverter {
 public:
     bool IsSupported(const torch::jit::Node *node) {
-        for (int i = 0; i < node->output()->uses().size(); i++) {
-            if (node->output()->uses()[i].user->kind() != at::prim::ListConstruct) {
-                return false;
-            } else {
-                auto& converter = GetGlobalTorchConvertMap()["prim::ListConstruct"];
-                if (!converter->IsSupported(node->output()->uses()[i].user))
+        if (node->inputs().size() == 2) {
+            // aten::size(%in_tensor, %dim)
+            for (int i = 0; i < node->output()->uses().size(); i++) {
+                if (node->output()->uses()[i].user->kind() != at::prim::ListConstruct) {
                     return false;
+                } else {
+                    auto& converter = GetGlobalTorchConvertMap()["prim::ListConstruct"];
+                    if (!converter->IsSupported(node->output()->uses()[i].user)) {
+                        return false;
+                    }
                 }
+            }
         }
         return true;
     }
@@ -929,13 +1187,15 @@ public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         // generate shape layer
         {
+            std::string shape_out_name = node->inputs().size() == 2 ? node->output(0)->debugName() + "_shape" : node->output(0)->debugName();
+
             std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
             layer_info->type                      = LAYER_SHAPE;
             layer_info->type_str                  = "Shape";
-            layer_info->name                      = node->output(0)->debugName() + "_shape";
+            layer_info->name                      = shape_out_name;
 
             layer_info->inputs.push_back(node->inputs()[0]->debugName());
-            layer_info->outputs.push_back(node->outputs()[0]->debugName() + "_shape");
+            layer_info->outputs.push_back(shape_out_name);
 
             layer_info->param = std::make_shared<LayerParam>();
 
@@ -944,50 +1204,52 @@ public:
             net_structure->layers.push_back(layer_info);
         }
 
-        // generate gather layer
-        {
-            std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-            layer_info->type                      = LAYER_GATHER;
-            layer_info->type_str                  = "Gather";
-            layer_info->name                      = node->output(0)->debugName() + "_gather";
+        if (node->inputs().size() == 2) {
+            // generate gather layer
+            {
+                std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+                layer_info->type                      = LAYER_GATHER;
+                layer_info->type_str                  = "Gather";
+                layer_info->name                      = node->output(0)->debugName() + "_gather";
 
-            layer_info->inputs.push_back(node->outputs()[0]->debugName() + "_shape");
-            layer_info->outputs.push_back(node->outputs()[0]->debugName() + "_gather");
+                layer_info->inputs.push_back(node->outputs()[0]->debugName() + "_shape");
+                layer_info->outputs.push_back(node->outputs()[0]->debugName() + "_gather");
 
-            auto layer_param                 = std::make_shared<GatherLayerParam>();
-            layer_param->axis                = 0;
-            layer_param->indices_in_resource = true;
+                auto layer_param                 = std::make_shared<GatherLayerParam>();
+                layer_param->axis                = 0;
+                layer_param->indices_in_resource = true;
 
-            layer_info->param = layer_param;
+                layer_info->param = layer_param;
 
-            const auto indices = getValue(node->inputs()[1]);
-            auto layer_res     = std::make_shared<GatherLayerResource>();
-            layer_res->indices = indices;
+                const auto indices = getValue(node->inputs()[1]);
+                auto layer_res     = std::make_shared<GatherLayerResource>();
+                layer_res->indices = indices;
 
-            ADD_INPUTS_AND_OUTPUTS;
+                ADD_INPUTS_AND_OUTPUTS;
 
-            net_structure->layers.push_back(layer_info);
-            net_resource->resource_map[layer_info->name] = layer_res;
-        }
+                net_structure->layers.push_back(layer_info);
+                net_resource->resource_map[layer_info->name] = layer_res;
+            }
 
-        // generate unsqueeze layer
-        {
-            std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-            layer_info->type                      = LAYER_UNSQUEEZE;
-            layer_info->type_str                  = "Unsqueeze";
-            layer_info->name                      = node->output(0)->debugName();
+            // generate unsqueeze layer
+            {
+                std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+                layer_info->type                      = LAYER_UNSQUEEZE;
+                layer_info->type_str                  = "Unsqueeze";
+                layer_info->name                      = node->output(0)->debugName();
 
-            layer_info->inputs.push_back(node->outputs()[0]->debugName() + "_gather");
-            layer_info->outputs.push_back(node->outputs()[0]->debugName());
+                layer_info->inputs.push_back(node->outputs()[0]->debugName() + "_gather");
+                layer_info->outputs.push_back(node->outputs()[0]->debugName());
 
-            auto layer_param  = std::make_shared<UnsqueezeLayerParam>();
-            layer_param->axes = {0};
+                auto layer_param  = std::make_shared<UnsqueezeLayerParam>();
+                layer_param->axes = {0};
 
-            layer_info->param = layer_param;
+                layer_info->param = layer_param;
 
-            ADD_INPUTS_AND_OUTPUTS;
+                ADD_INPUTS_AND_OUTPUTS;
 
-            net_structure->layers.push_back(layer_info);
+                net_structure->layers.push_back(layer_info);
+            }
         }
 
         return TNN_OK;
@@ -1032,26 +1294,34 @@ public:
     }
 
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
-        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-        layer_info->type = LAYER_SPLITTORCH;
-        layer_info->type_str = "SplitTorch";
-        layer_info->name = node->output(0)->debugName();
+        auto unpack_node      = node->output(0)->uses()[0].user;
+        const int output_size = unpack_node->outputs().size();
+        const int split_size  = static_cast<int>(getValue<int64_t>(node->inputs()[1]));
+        const int axis        = static_cast<int>(getValue<int64_t>(node->inputs()[2]));
+        for (int i = 0; i < output_size; i++) {
+            std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+            layer_info->type                      = LAYER_STRIDED_SLICE_V2;
+            layer_info->type_str                  = "StridedSliceV2";
+            layer_info->name                      = unpack_node->output(i)->debugName();
 
-        layer_info->inputs.push_back(node->inputs()[0]->debugName());
-        // auto unpack_node = node->output()->uses()[0].user;
-        auto unpack_node = node->next();
-	for (const auto output : unpack_node->outputs()) {
-            layer_info->outputs.push_back(output->debugName());
+            layer_info->inputs.push_back(node->inputs()[0]->debugName());
+            layer_info->outputs.push_back(unpack_node->output(i)->debugName());
+
+            auto layer_param = std::make_shared<StrideSliceV2LayerParam>();
+            layer_param->begins.push_back(i * split_size);
+            layer_param->ends.push_back((i + 1) * split_size);
+            if (i + 1 == output_size) {
+                layer_param->ends.back() = INT_MAX;
+            }
+            layer_param->axes.push_back(axis);
+            layer_param->strides.push_back(1);
+
+            layer_info->param = layer_param;
+
+            ADD_INPUTS_AND_OUTPUTS;
+
+            net_structure->layers.push_back(layer_info);
         }
-
-        auto layer_param = std::make_shared<SplitTorchLayerParam>();
-        layer_param->split_size = static_cast<int>(getValue<int64_t>(node->inputs()[1]));
-        layer_param->axis = static_cast<int>(getValue<int64_t>(node->inputs()[2]));
-        layer_info->param = layer_param;
-
-        ADD_INPUTS_AND_OUTPUTS;
-
-        net_structure->layers.push_back(layer_info);
 
         return TNN_OK;
     }
@@ -1062,7 +1332,8 @@ public:
     // Currently, casting data to float is not supported.
     bool IsSupported(const torch::jit::Node *node) {
         const auto& inputs = node->inputs();
-        if (inputs[1]->type()->kind() == c10::TypeKind::ScalarTypeType) {
+        const auto& input1_type = inputs[1]->type()->kind();
+        if (input1_type == c10::TypeKind::ScalarTypeType || input1_type == c10::TypeKind::IntType) {
             const auto dtype = getValue<int>(inputs[1]);
             // "6" means float data
             return dtype == 6;
@@ -1097,8 +1368,8 @@ class ReshapeTorchConverter : public TorchOpConverter {
 public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
-        layer_info->type                      = LAYER_RESHAPE;
-        layer_info->type_str                  = "Reshape";
+        layer_info->type                      = LAYER_RESHAPETORCH;
+        layer_info->type_str                  = "ReshapeTorch";
         layer_info->name                      = node->output(0)->debugName();
 
         for (const auto &input : node->inputs()) {
@@ -1202,8 +1473,21 @@ public:
     }
 };
 
+// func: upsample_nearest2d.vec(Tensor input, int[]? output_size, float[]? scale_factors) -> Tensor
+// func: upsample_nearest2d(Tensor self, int[2] output_size, float? scales_h=None, float? scales_w=None) -> Tensor
+// func: upsample_bilinear2d.vec(Tensor input, int[]? output_size, bool align_corners, float[]? scale_factors) -> Tensor
+// func: upsample_bilinear2d(Tensor self, int[2] output_size, bool align_corners, float? scales_h=None, float? scales_w=None) -> Tensor
 class UpsampleTorchConverter : public TorchOpConverter {
 public:
+    bool IsSupported(const torch::jit::Node *node) {
+        // in this mode, upsample param dims will be calc runtime
+        // Todo: trt shape tensor should expand hw tensor to nchw tensor
+        if (!toIValue(node->input(1))) {
+            return false;
+        }
+        return true;
+    }
+
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
         layer_info->type = LAYER_UPSAMPLE;
@@ -1221,8 +1505,18 @@ public:
                     auto scales = getValue<std::vector<double>>(node->input(2));
                     layer_param->scales = {(float)scales[1], (float)scales[0]};
                 } else if (node->inputs().size() == 4) {
-                    layer_param->scales.push_back(getValue<float>(node->input(3)));
-                    layer_param->scales.push_back(getValue<float>(node->input(2)));
+                    if (!toIValue(node->input(1))) {
+                        layer_info->inputs.push_back(node->input(1)->debugName() + "_roi");
+                        layer_info->inputs.push_back(node->input(1)->debugName() + "_scale");
+                        layer_info->inputs.push_back(node->input(1)->debugName());
+                        layer_param->scales = {0.f, 0.f};
+                        // empty raw buffer just makes tnn not crash
+                        net_resource->constant_map[layer_info->inputs[1]] = std::make_shared<RawBuffer>();
+                        net_resource->constant_map[layer_info->inputs[2]] = std::make_shared<RawBuffer>();
+                    } else {
+                        layer_param->scales.push_back(getValue<float>(node->input(3)));
+                        layer_param->scales.push_back(getValue<float>(node->input(2)));
+                    }
                 }
 
                 break;
@@ -1230,7 +1524,13 @@ public:
                 layer_param->mode = 2;
                 if (!toIValue(node->input(1))) {
                     // calc in runtime
+                    layer_info->inputs.push_back(node->input(1)->debugName() + "_roi");
+                    layer_info->inputs.push_back(node->input(1)->debugName() + "_scale");
                     layer_info->inputs.push_back(node->input(1)->debugName());
+                    layer_param->scales = {0.f, 0.f};
+                    // empty raw buffer just makes tnn not crash
+                    net_resource->constant_map[layer_info->inputs[1]] = std::make_shared<RawBuffer>();
+                    net_resource->constant_map[layer_info->inputs[2]] = std::make_shared<RawBuffer>();
                 } else {
                     auto output_size = getValue<std::vector<int64_t>>(node->input(1));
                     layer_param->dims = {(int)output_size[0], (int)output_size[1]};
@@ -1257,6 +1557,164 @@ public:
     }
 };
 
+// func: mean.dim(Tensor self, int[1] dim, bool keepdim=False, *, ScalarType? dtype=None) -> Tensor
+class ReduceTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type_str = "ReduceMean";
+        layer_info->name = node->output(0)->debugName();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param = std::make_shared<ReduceLayerParam>();
+        auto axis = getValue<std::vector<int64_t>>(node->inputs()[1]);
+        for(auto value : axis) {
+            layer_param->axis.push_back(value);
+        }
+        layer_param->keep_dims = getValue<bool>(node->inputs()[2]);
+
+        switch (node->kind()) {
+            case at::aten::mean:
+                layer_info->type = LAYER_REDUCE_MEAN;                 
+            default: 
+                break;
+        }
+
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+// func: reflection_pad2d(Tensor self, int[4] padding) -> Tensor
+class ReflectionPadTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_PAD;
+        layer_info->type_str                  = "Pad";
+        layer_info->name                      = node->output(0)->debugName();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param  = std::make_shared<PadLayerParam>();
+        layer_param->type = 1;
+        const auto pads   = getValue<std::vector<int64_t>>(node->input(1));
+        layer_param->pads = {(int)(pads[2]), (int)(pads[3]), (int)(pads[0]), (int)(pads[1]), 0, 0};
+
+        auto t            = layer_param->pads;
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+// func: clamp(Tensor self, Scalar? min=None, Scalar? max=None) -> Tensor
+class ClipTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_CLIP;
+        layer_info->type_str                  = "Clip";
+        layer_info->name                      = node->output(0)->debugName();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param       = std::make_shared<ClipLayerParam>();
+        bool min_value_is_none = node->input(1)->type()->kind() == c10::TypeKind::NoneType;
+        layer_param->min       = min_value_is_none ? -FLT_MAX : getValue<float>(node->input(1));
+
+        bool max_value_is_none = node->input(2)->type()->kind() == c10::TypeKind::NoneType;
+        layer_param->max       = max_value_is_none ? FLT_MAX : getValue<float>(node->input(2));
+
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+// func: clamp(Tensor self, Scalar? min=None, Scalar? max=None) -> Tensor
+class PowerTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_POWER;
+        layer_info->type_str                  = "Power";
+        layer_info->name                      = node->output(0)->debugName();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param         = std::make_shared<PowLayerParam>();
+        const auto exponent_type = node->input(1)->type()->kind();
+        switch (exponent_type) {
+            case c10::TypeKind::IntType:
+                layer_param->exponent = static_cast<float>(getValue<int>(node->input(1)));
+                break;
+            case c10::TypeKind::FloatType:
+                layer_param->exponent = getValue<float>(node->input(1));
+                break;
+            default:
+                break;
+        }
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+// func: topk(Tensor self, int k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+class TopKTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_TOPK;
+        layer_info->type_str                  = "TopK";
+        layer_info->name                      = node->output(0)->debugName();
+
+        const auto &inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[1]->debugName());
+
+        auto layer_param = std::make_shared<TopKLayerParam>();
+
+        layer_param->k       = static_cast<int>(getValue<int64_t>(inputs[1]));
+        layer_param->axis    = static_cast<int>(getValue<int64_t>(inputs[2]));
+        layer_param->largest = static_cast<int>(getValue<bool>(inputs[3]));
+        layer_param->sorted  = static_cast<int>(getValue<bool>(inputs[4]));
+
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
 class ListTorchConverter : public TorchOpConverter {
 public:
     bool IsSupported(const torch::jit::Node *node) {
@@ -1265,13 +1723,15 @@ public:
         auto type = node->inputs().at(0)->type();
 
         if (type->kind() == c10::TypeKind::IntType) {
-            if (node->inputs().at(0)->node()->kind() == c10::aten::size) {
-                if (GetGlobalTorchConvertMap().count(node->next()->kind().toQualString()) > 0) {
+            auto user_type_str = node->output(0)->uses()[0].user->kind().toQualString();
+            if (GetGlobalTorchConvertMap().count(user_type_str)) {
+                auto& converter = GetGlobalTorchConvertMap()[user_type_str];
+                if (converter->IsSupported(node->output(0)->uses()[0].user)) {
                     return true;
                 }
             }
         } else if (type->kind() == c10::TypeKind::TensorType) {
-            if (node->next()->kind() == c10::aten::cat) {
+            if (node->output(0)->uses()[0].user->kind() == c10::aten::cat) {
                 return true;
             }
         }
@@ -1325,10 +1785,224 @@ public:
 class ListUnpackTorchConverter : public TorchOpConverter {
 public:
     bool IsSupported(const torch::jit::Node *node) {
-	    return node->inputs().at(0)->node()->kind() == c10::aten::split;
+
+        torch::jit::Node* in0_node = node->input(0)->node();
+        if (in0_node->kind() == c10::aten::split) {
+            return true;
+        } else if (in0_node->kind() == c10::aten::size) {
+            if (in0_node->inputs().size() == 1) {
+                // aten::size(%in_tensor), return a list representing shape of the Tensor.
+                return true;
+            }
+        }
+        return false;
     }
 
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        torch::jit::Node* in0_node = node->input(0)->node();
+
+        if (in0_node->kind() == c10::aten::size && in0_node->inputs().size() == 1) {
+            const auto input = node->outputs();
+            const auto outputs = node->outputs();
+            const int num_dims = outputs.size();
+            
+            for (int dim=0; dim<num_dims; dim++) {
+                std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+                layer_info->type                 = LAYER_GATHER;
+                layer_info->type_str             = "Gather";
+                layer_info->name                 = outputs[dim]->debugName();
+
+                layer_info->inputs.push_back(node->input(0)->debugName());
+                layer_info->outputs.push_back(outputs[dim]->debugName());
+
+                auto layer_param                 = std::make_shared<GatherLayerParam>();
+                layer_param->axis                = 0;
+                layer_param->indices_in_resource = true;
+
+                layer_info->param  = layer_param;
+
+                int indices        = dim;
+                auto layer_res     = std::make_shared<GatherLayerResource>();
+                auto indices_buf   = RawBuffer(sizeof(int), reinterpret_cast<char *>(&indices), {1});
+                indices_buf.SetDataType(DATA_TYPE_INT32);
+                layer_res->indices = indices_buf;
+
+                ADD_INPUTS_AND_OUTPUTS;
+
+                net_structure->layers.push_back(layer_info);
+                net_resource->resource_map[layer_info->name] = layer_res;
+            }
+        }
+        
+        return TNN_OK;
+    }
+};
+
+class SqueezeTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_SQUEEZE;
+        layer_info->type_str                  = "Squeeze";
+        layer_info->name                      = node->output(0)->debugName();
+
+        const auto &inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param = std::make_shared<SqueezeLayerParam>();
+
+        layer_param->axes = {static_cast<int>(getValue<int64_t>(inputs[1]))};
+
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+class ExpandasTorchConverter : public TorchOpConverter {
+public:
+    bool IsSupported(const torch::jit::Node *node) {
+        if (node->inputs().size() == 2) {
+            // only support "norm + clampmin + expandas + div"
+            for (int i = 0; i < node->output()->uses().size(); i++) {
+                if (node->output()->uses()[i].user->kind() != at::aten::div) {
+                    return false;
+                } else {
+                    auto& converter = GetGlobalTorchConvertMap()["aten::div"];
+                    if (!converter->IsSupported(node->output()->uses()[i].user)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_EXPANDAS;
+        layer_info->type_str                  = "Expandas";
+        layer_info->name                      = node->output(0)->debugName();
+
+        const auto &inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->inputs.push_back(node->inputs()[1]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        layer_info->param = std::make_shared<LayerParam>();
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+class ClampminTorchConverter : public TorchOpConverter {
+public:
+    bool IsSupported(const torch::jit::Node *node) {
+        // only support "norm + clampmin + expandas + div"
+        for (int i = 0; i < node->output()->uses().size(); i++) {
+            if (node->output()->uses()[i].user->kind() != at::aten::expand_as) {
+                return false;
+            } else {
+                auto& converter = GetGlobalTorchConvertMap()["aten::expand_as"];
+                if (!converter->IsSupported(node->output()->uses()[i].user)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_CLAMPMIN;
+        layer_info->type_str                  = "Clampmin";
+        layer_info->name                      = node->output(0)->debugName();
+
+        const auto &inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param = std::make_shared<ClampminLayerParam>();
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+class NormTorchConverter : public TorchOpConverter {
+public:
+    bool IsSupported(const torch::jit::Node *node) {
+        // only support "norm + clamp_min + expand_as + div"
+        for (int i = 0; i < node->output()->uses().size(); i++) {
+            if (node->output()->uses()[i].user->kind() != at::aten::clamp_min) {
+                return false;
+            } else {
+                auto& converter = GetGlobalTorchConvertMap()["aten::clamp_min"];
+                if (!converter->IsSupported(node->output()->uses()[i].user)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type                      = LAYER_NORM;
+        layer_info->type_str                  = "Norm";
+        layer_info->name                      = node->output(0)->debugName();
+
+        const auto &inputs = node->inputs();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        auto layer_param = std::make_shared<NormLayerParam>();
+        layer_info->param = layer_param;
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
+        return TNN_OK;
+    }
+};
+
+class TanhTorchConverter : public TorchOpConverter {
+public:
+    Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
+        std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
+        layer_info->type = LAYER_TANH;
+        layer_info->type_str = "Tanh";
+        layer_info->name = node->output(0)->debugName();
+
+        layer_info->inputs.push_back(node->inputs()[0]->debugName());
+        layer_info->outputs.push_back(node->outputs()[0]->debugName());
+
+        layer_info->param = std::make_shared<LayerParam>();
+
+        ADD_INPUTS_AND_OUTPUTS;
+
+        net_structure->layers.push_back(layer_info);
+
         return TNN_OK;
     }
 };
@@ -1515,47 +2189,66 @@ REGISTER_TORCH_OP_CONVERTER(AvgPool, aten, avg_pool2d)
 REGISTER_TORCH_OP_CONVERTER(BatchNorm, aten, batch_norm)
 REGISTER_TORCH_OP_CONVERTER(Binary, aten, add_)
 REGISTER_TORCH_OP_CONVERTER(Binary, aten, add)
-REGISTER_TORCH_OP_CONVERTER(Binary, aten, mul)
 REGISTER_TORCH_OP_CONVERTER(Binary, aten, div)
+REGISTER_TORCH_OP_CONVERTER(Binary, aten, floordiv)
+REGISTER_TORCH_OP_CONVERTER(Binary, aten, eq)
 REGISTER_TORCH_OP_CONVERTER(Binary, aten, gt)
+REGISTER_TORCH_OP_CONVERTER(Binary, aten, mul)
+REGISTER_TORCH_OP_CONVERTER(Binary, aten, sub)
+REGISTER_TORCH_OP_CONVERTER(Clip, aten, clamp)
+REGISTER_TORCH_OP_CONVERTER(Clampmin, aten, clamp_min)
+REGISTER_TORCH_OP_CONVERTER(Clone, aten, clone)
 REGISTER_TORCH_OP_CONVERTER(Concat, aten, cat)
+REGISTER_TORCH_OP_CONVERTER(Clampmin, aten, clamp_min)
 REGISTER_TORCH_OP_CONVERTER(Conv2D, aten, conv2d)
+REGISTER_TORCH_OP_CONVERTER(Conv3D, aten, conv3d)
 REGISTER_TORCH_OP_CONVERTER(_Conv, aten, _convolution)
+REGISTER_TORCH_OP_CONVERTER(Expandas, aten, expand_as)
 REGISTER_TORCH_OP_CONVERTER(Flatten, aten, flatten)
 REGISTER_TORCH_OP_CONVERTER(Gather, aten, select)
 REGISTER_TORCH_OP_CONVERTER(Gelu, aten, gelu)
 REGISTER_TORCH_OP_CONVERTER(HardTanh, aten, hardtanh_)
 REGISTER_TORCH_OP_CONVERTER(HardSigmoid, aten, hardsigmoid_)
+REGISTER_TORCH_OP_CONVERTER(HardSigmoid, aten, hardsigmoid)
 REGISTER_TORCH_OP_CONVERTER(HardSwish, aten, hardswish_)
 REGISTER_TORCH_OP_CONVERTER(LayerNorm, aten, layer_norm)
 REGISTER_TORCH_OP_CONVERTER(Linear, aten, linear)
 REGISTER_TORCH_OP_CONVERTER(MatMul, aten, matmul)
+REGISTER_TORCH_OP_CONVERTER(Norm, aten, norm)
 REGISTER_TORCH_OP_CONVERTER(Permute, aten, permute)
 REGISTER_TORCH_OP_CONVERTER(Pool, aten, adaptive_avg_pool2d)
+REGISTER_TORCH_OP_CONVERTER(Pool3D, aten, adaptive_avg_pool3d)
 REGISTER_TORCH_OP_CONVERTER(Pool, aten, max_pool2d)
+REGISTER_TORCH_OP_CONVERTER(Pool, aten, max_pool3d)
+REGISTER_TORCH_OP_CONVERTER(Power, aten, pow)
+REGISTER_TORCH_OP_CONVERTER(ReflectionPad, aten, reflection_pad2d)
 REGISTER_TORCH_OP_CONVERTER(Relu, aten, relu)
 REGISTER_TORCH_OP_CONVERTER(Relu, aten, relu_)
 REGISTER_TORCH_OP_CONVERTER(Reshape, aten, reshape)
 REGISTER_TORCH_OP_CONVERTER(Reshape, aten, view)
 REGISTER_TORCH_OP_CONVERTER(Sigmoid, aten, sigmoid)
+REGISTER_TORCH_OP_CONVERTER(Sigmoid, aten, sigmoid_)
 REGISTER_TORCH_OP_CONVERTER(Size, aten, size)
 REGISTER_TORCH_OP_CONVERTER(Softmax, aten, softmax)
 REGISTER_TORCH_OP_CONVERTER(Split, aten, split)
+REGISTER_TORCH_OP_CONVERTER(Squeeze, aten, squeeze)
 REGISTER_TORCH_OP_CONVERTER(StridedSlice, aten, slice)
+REGISTER_TORCH_OP_CONVERTER(Tanh, aten, tanh)
 REGISTER_TORCH_OP_CONVERTER(To, aten, to)
+REGISTER_TORCH_OP_CONVERTER(TopK, aten, topk)
 REGISTER_TORCH_OP_CONVERTER(Transpose, aten, transpose)
 // REGISTER_TORCH_OP_CONVERTER(Upsample, aten, upsample_bilinear2d)
+
+//comment out by peng for test swapface
 REGISTER_TORCH_OP_CONVERTER(Upsample, aten, upsample_nearest2d)
 REGISTER_TORCH_OP_CONVERTER(Unsqueeze, aten, unsqueeze)
-
+REGISTER_TORCH_OP_CONVERTER(Reduce, aten, mean)
 
 REGISTER_TORCH_OP_CONVERTER(List, prim, ListConstruct)
 REGISTER_TORCH_OP_CONVERTER(ListUnpack, prim, ListUnpack)
 REGISTER_TORCH_OP_CONVERTER(FakeQuantizePerChannelAffine, aten, fake_quantize_per_channel_affine)
 REGISTER_TORCH_OP_CONVERTER(FakeQuantizePerTensorAffine, aten, fake_quantize_per_tensor_affine)
-
 // REGISTER_TORCH_OP_CONVERTER(QuantConv2D, quantized, conv2d)
 
 } // namespace conversion
 }
-

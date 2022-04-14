@@ -30,8 +30,13 @@ ILayer* DeconvolutionTRTLayerBuilder::AddToNetwork(INetworkDefinition* network) 
         auto dims = weight_tensor->getDimensions();
         paramlist->kernels[0] = dims.d[3];
         paramlist->kernels[1] = dims.d[2];
-        paramlist->input_channel = dims.d[1];
-        paramlist->output_channel = dims.d[0];
+	if (paramlist->pad_type == 3) {
+            paramlist->input_channel = dims.d[0] / paramlist->group;
+            paramlist->output_channel = dims.d[1] * paramlist->group;
+	} else {
+            paramlist->input_channel = dims.d[1];
+            paramlist->output_channel = dims.d[0];
+	}
     }
 
     if (paramlist->dialations[1] != 1 || paramlist->dialations[0] != 1) {
@@ -67,15 +72,13 @@ ILayer* DeconvolutionTRTLayerBuilder::AddToNetwork(INetworkDefinition* network) 
     } else {
         DimsVector postPadding{pads[3], pads[1]};
         DimsVector  prePadding{pads[2], pads[0]};
-        IPaddingLayer* padding_layer = network->addPaddingNd(*tensor, 
-                                                    ConvertToTRTDims(prePadding), 
-                                                    ConvertToTRTDims(postPadding));
-        ITensor* pad_tensor = padding_layer->getOutput(0);
-        deconv_layer = network->addDeconvolution(*pad_tensor, paramlist->output_channel, kernelSize,
+        deconv_layer = network->addDeconvolution(*tensor, paramlist->output_channel, kernelSize,
             kernelWeights, biasWeights);
         if(deconv_layer != NULL) {
             deconv_layer->setName(layer_name_.c_str());
             deconv_layer->setStrideNd(ConvertToTRTDimsReverse(paramlist->strides));
+            deconv_layer->setPrePadding(ConvertToTRTDims(prePadding));
+            deconv_layer->setPostPadding(ConvertToTRTDims(postPadding));
 #if NV_TENSORRT_MAJOR * 10 + NV_TENSORRT_MINOR >= 71
             deconv_layer->setDilationNd(ConvertToTRTDimsReverse(paramlist->dialations));
 #endif

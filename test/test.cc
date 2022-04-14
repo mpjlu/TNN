@@ -149,15 +149,15 @@ namespace test {
  
             Timer timer(model_name + " - " + FLAGS_dt);
 
-            for (int i = 0; i < FLAGS_ic; ++i) {
-                for(auto element : input_converters_map) {
-                    auto name = element.first;
-                    auto blob_converter = element.second;
-                    ret = blob_converter->ConvertFromMatAsync(*input_mat_map[name], input_params_map[name], command_queue);
-                    if (!CheckResult("ConvertFromMat", ret)) {
-                        return ret;
-                    }
+            for(auto element : input_converters_map) {
+                auto name = element.first;
+                auto blob_converter = element.second;
+                ret = blob_converter->ConvertFromMatAsync(*input_mat_map[name], input_params_map[name], command_queue);
+                if (!CheckResult("ConvertFromMat", ret)) {
+                    return ret;
                 }
+            }
+            for (int i = 0; i < FLAGS_ic; ++i) {
 #if (DUMP_INPUT_BLOB || DUMP_OUTPUT_BLOB)
                 ret = instance->Forward();
 #else
@@ -169,19 +169,19 @@ namespace test {
                     return ret;
                 }
 
-                bool is_update = CreateBlobMatMap(output_blob_map, 0, output_mat_map);
-                if (is_update) {
-                    output_converters_map = CreateBlobConverterMap(output_blob_map);
-                    output_params_map = CreateConvertParamMap(output_mat_map, false);
-                }
+            }
+            bool is_update = CreateBlobMatMap(output_blob_map, 0, output_mat_map);
+            if (is_update) {
+                output_converters_map = CreateBlobConverterMap(output_blob_map);
+                output_params_map = CreateConvertParamMap(output_mat_map, false);
+            }
 
-                for(auto element : output_converters_map) {
-                    auto name = element.first;
-                    auto blob_converter = element.second;
-                    ret = blob_converter->ConvertToMat(*output_mat_map[name], output_params_map[name], command_queue);
-                    if (!CheckResult("ConvertToMat", ret)) {
-                        return ret;
-                    }
+            for(auto element : output_converters_map) {
+                auto name = element.first;
+                auto blob_converter = element.second;
+                ret = blob_converter->ConvertToMat(*output_mat_map[name], output_params_map[name], command_queue);
+                if (!CheckResult("ConvertToMat", ret)) {
+                    return ret;
                 }
             }
 #if TNN_PROFILE
@@ -600,7 +600,16 @@ namespace test {
 
 
     void WriteOutput(MatMap& outputs) {
-        std::ofstream f(FLAGS_op);
+	std::stringstream thread_id_stream;
+        thread_id_stream << std::this_thread::get_id();
+	std::string thread_id = thread_id_stream.str();
+        std::string output_file_name;
+	if(FLAGS_tt > 1) {
+            output_file_name = FLAGS_op + thread_id; 
+	} else {
+	    output_file_name = FLAGS_op;
+	}
+	std::ofstream f(output_file_name);
         LOGD("the output path: %s\n", FLAGS_op.c_str());
         if (!FLAGS_fc) {
             LOGD("output path: %s\n", FLAGS_op.c_str());

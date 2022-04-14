@@ -228,6 +228,11 @@ enum LayerType {
     LAYER_SCATTER                                           = 336,
     LAYER_SPLITTORCH                                        = 337,
     LAYER_PERMUTEV2                                         = 338,
+    LAYER_CLONE                                             = 339,
+    LAYER_RESHAPETORCH                                      = 340,
+    LAYER_NORM                                              = 341,
+    LAYER_CLAMPMIN                                          = 342,
+    LAYER_EXPANDAS                                          = 343,
 
     LAYER_BLOB_SCALE                                        = 600,
 
