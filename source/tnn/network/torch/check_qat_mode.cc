@@ -60,7 +60,7 @@ bool inlineCalls(Block* block) {
            cur->kind() == Symbol::fromQualString("aten::fake_quantize_per_channel_affine")) {
           return true;
         }
-        std::cout<<"PengNodeKind:"<<cur->kind().toQualString()<<" Kind:"<<cur->kind()<<std::endl;
+        // std::cout<<"NodeKind:"<<cur->kind().toQualString()<<" Kind:"<<cur->kind()<<std::endl;
         for (auto b : cur->blocks()) {
           inlineCalls(b);
         }

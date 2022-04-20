@@ -748,7 +748,6 @@ Status TensorRTNetwork_::InitWithoutCache(BlobMap &inputs, BlobMap &outputs, std
     if (this->int8_mode) {
         m_trt_config->setFlag(BuilderFlag::kINT8);
     }
-	std::cout<<"PengTRTMode:"<<this->qat_mode<<std::endl;
     if (this->qat_mode) {
         m_trt_config->setFlag(BuilderFlag::kINT8);
     }
@@ -757,9 +756,6 @@ Status TensorRTNetwork_::InitWithoutCache(BlobMap &inputs, BlobMap &outputs, std
         LOGE("create tensorrt engine failed\n");
         return TNNERR_CUDA_TENSORRT_ERROR;
     }
-//    Status ret = CreateExecuteContext();
-//    if (ret != TNN_OK)
-//        return ret;
     m_trt_builder->destroy();
     m_trt_config->destroy();
     m_trt_network->destroy();

@@ -2033,22 +2033,15 @@ public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         //add quantize layer
         {
-            std::cout<<"In Per Tensor, call getValue"<<std::endl;
             std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
             layer_info->type                      = LAYER_QUANTIZE;
             layer_info->type_str                  = "Quantize";
             layer_info->name                      = node->output(0)->debugName() + "TensorQ";
             auto scale_buf = getValue(node->inputs()[1]);
-            if (scale_buf.GetBytesSize() != 0) {
-                std::cout<<"scale_buf size:"<<scale_buf.GetBytesSize()<<" DataCount:"<<scale_buf.GetDataCount()<<std::endl;
-            } else {
-                std::cout<<"scale_buf size is zero"<<std::endl;
-            }
             
             const auto input      = node->inputs()[0];
             if (toIValue(input)) {
                 auto input_buf = getValue(input);
-                std::cout<<"PengQuantize Tensor input size:"<<input_buf.GetBytesSize()<<std::endl;
             	net_resource->constant_map[input->debugName()] = std::make_shared<RawBuffer>(input_buf);
             }
             auto layer_res = new(QuantizeLayerResource);
@@ -2078,11 +2071,6 @@ public:
             layer_info->name                      = node->output(0)->debugName();
     
             auto scale_buf = getValue(node->inputs()[1]);
-            if (scale_buf.GetBytesSize() != 0) {
-                std::cout<<"scale_buf size:"<<scale_buf.GetBytesSize()<<std::endl;
-            } else {
-                std::cout<<"scale_buf size is zero"<<std::endl;
-            }
             
             auto layer_res = new(QuantizeLayerResource);
     
@@ -2113,17 +2101,11 @@ public:
     Status Convert(const torch::jit::Node *node, NetStructure *net_structure, NetResource *net_resource) {
         //add quantize layer
         {
-            std::cout<<"In Per Channel, call getValue"<<std::endl;
             std::shared_ptr<LayerInfo> layer_info = std::make_shared<LayerInfo>();
             layer_info->type                      = LAYER_QUANTIZE;
             layer_info->type_str                  = "Quantize";
             layer_info->name                      = node->output(0)->debugName() + "ChannelQ";
             auto scale_buf =getValue(node->inputs()[1]);
-            if (scale_buf.GetBytesSize() != 0) {
-                std::cout<<"Per Channel scale_buf size:"<<scale_buf.GetBytesSize()<<" DataCount:"<<scale_buf.GetDataCount()<<std::endl;
-            } else {
-                std::cout<<"Per Channel scale_buf size is zero"<<std::endl;
-            }
             
             const auto input      = node->inputs()[0];
             RawBuffer rb = getValue(input);
@@ -2155,11 +2137,6 @@ public:
     
             const auto input      = node->outputs()[0];
             auto scale_buf = getValue(node->inputs()[1]);
-            if (scale_buf.GetBytesSize() != 0) {
-                std::cout<<"Per Channel scale_buf size:"<<scale_buf.GetBytesSize()<<std::endl;
-            } else {
-                std::cout<<"Per Channel scale_buf size is zero"<<std::endl;
-            }
             
             auto layer_res = new(QuantizeLayerResource);
     

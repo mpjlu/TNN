@@ -261,7 +261,6 @@ public:
                     : "");
             continue;
           }
-          std::cout<<"attrModule::"<<name<<std::endl;
           TORCH_INTERNAL_ASSERT(attrModule.hasattr(name));
           Value* paramConst = nullptr;
           auto iter = attrValues.find(attrModule._ivalue());

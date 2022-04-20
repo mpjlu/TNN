@@ -293,7 +293,7 @@ namespace jit {
         module.eval();
         auto graph = module.get_method("forward").graph();
         if (CheckQatMode(*graph)) {
-            std::cout<<"PengMode QAT"<<std::endl;
+            std::cout<<"Mode QAT"<<std::endl;
             // QAT cannot use freeze_module, because freeze_module will remove fake_quantize op
             torch::jit::Inline(*graph);
             ConstantPropagationImmutableTypes(graph);
@@ -305,37 +305,20 @@ namespace jit {
             std::cout<<"Graph after AttributePropagator"<<std::endl;
             std::cout << graph->toString(false) << std::endl;
         } else {
-            std::cout<<"PengMode normal"<<std::endl;
+            std::cout<<"Mode normal"<<std::endl;
             module = torch::jit::freeze_module(module);
             graph = module.get_method("forward").graph();
             std::cout << graph->toString(false) << std::endl;
         }
 
-        /*
-        torch::jit::EliminateRedundantGuards(graph);
-        torch::jit::RemoveListMutation(graph);
-        torch::jit::RemoveTensorMutation(graph);
-        torch::jit::CreateFunctionalGraphs(graph);
-        torch::jit::InlineFunctionalGraphs(graph);
-        torch::jit::PeepholeOptimize(graph, false);
-        torch::jit::FuseLinear(graph);
-        torch::jit::LowerAllTuples(graph);
-        torch::jit::EliminateDeadCode(graph);
-        */ 
         
         LowerSimpleTuples(graph);
         
         removeDropout(module);
         RemoveException(graph->block());
         RemoveListAppend(graph.get(), graph->block());
-//      Remove Concat cause cascade rcnn crash        
-//        RemoveConcat(graph->block());
         RemoveContiguous(graph);
         
-//        RemoveClone(graph->block());
-//        RemoveNoneTypeFromTuple(graph->block());
-//        RemoveSlice(graph->block());
-
         torch::jit::EliminateDeadCode(graph);
         std::cout<<"DOT Graph:"<<std::endl;
         std::cout<<ToDotGraph(*graph)<<std::endl;
