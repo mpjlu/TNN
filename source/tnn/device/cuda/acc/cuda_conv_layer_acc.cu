@@ -37,6 +37,7 @@ Status CudaConvLayerAcc::Init(Context *context, LayerParam *param, LayerResource
     DimsVector output_dims = outputs[0]->GetBlobDesc().dims;
 
     if (input_dims.size() == 0 || output_dims.size() == 0) {
+        LOGE("Conv layer acc input_dims or output_dims is 0 error\n");
         return TNNERR_LAYER_ERR;
     }
 
@@ -85,6 +86,7 @@ Status CudaConvLayerAcc::Init(Context *context, LayerParam *param, LayerResource
     if (conv_param->bias) {
         bias_term_ = true;
         if (output_dims[1] * sizeof(float) != conv_resource->bias_handle.GetBytesSize()) {
+            LOGE("Conv layer acc bias size error\n");
             return TNNERR_MODEL_ERR;
         }
 
