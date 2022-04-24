@@ -493,7 +493,8 @@ Status TensorRTNetwork_::InitLayers(NetStructure *net_structure, NetResource *ne
         ret = cur_layer->Init(context_, layer_info->param.get(), layer_resource, inputs,
             outputs, device_, enable_const_folder);
         if (ret != TNN_OK) {
-            LOGE("Error Init layer %s (err: %d or 0x%X)\n", cur_layer->GetLayerName().c_str(), (int)ret, (int)ret);
+            LOGE("Error Init layer: %s layer type: %d (err: %d or 0x%X)\n", cur_layer->GetLayerName().c_str(),
+                type, (int)ret, (int)ret);
             return ret;
         }
 

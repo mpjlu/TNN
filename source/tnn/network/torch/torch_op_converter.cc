@@ -2216,7 +2216,7 @@ REGISTER_TORCH_OP_CONVERTER(Transpose, aten, transpose)
 // REGISTER_TORCH_OP_CONVERTER(Upsample, aten, upsample_bilinear2d)
 
 //comment out by peng for test swapface
-REGISTER_TORCH_OP_CONVERTER(Upsample, aten, upsample_nearest2d)
+// REGISTER_TORCH_OP_CONVERTER(Upsample, aten, upsample_nearest2d)
 REGISTER_TORCH_OP_CONVERTER(Unsqueeze, aten, unsqueeze)
 REGISTER_TORCH_OP_CONVERTER(Reduce, aten, mean)
 
