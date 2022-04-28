@@ -712,6 +712,7 @@ std::string DefaultNetwork::GenerateCacheFileName(ModelConfig &model_config, std
 
 Status DefaultNetwork::ReshapeLayers() {
     for (auto cur_layer : layers_) {
+        LOGD("ReshapeLayers *** before reshape ****Output Shape: [%s]\n", cur_layer->GetOutputBlobs()[0]->GetBlobDesc().description().c_str());
         auto status = cur_layer->Reshape();
         RETURN_ON_NEQ(status, TNN_OK);
         //Note output shape may not change after reshape for const folder, but will do change after forward because shape may be determined at rumtime

@@ -61,7 +61,7 @@ Status BaseLayer::Init(Context* context, LayerParam* param, LayerResource* resou
     
     if (runtime_model_ == RUNTIME_MODE_NORMAL) {
         for (auto& output_blob : output_blobs) {
-            LOGD("InferOutputShape: %s\n", output_blob->GetBlobDesc().description().c_str());
+            LOGD("InferOutputShape: %s, layer type: %d\n", output_blob->GetBlobDesc().description().c_str(), type_);
         }
         auto dims = output_blobs[0]->GetBlobDesc().dims;
         for (auto item : dims) {
